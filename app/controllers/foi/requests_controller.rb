@@ -2,7 +2,7 @@
 
 class Foi::RequestsController < ApplicationController
   before_action :new_foi_request, only: %i[new create]
-  before_action :find_foi_request, only: %i[show]
+  before_action :find_foi_request, only: %i[show edit update]
 
   def index; end
 
@@ -20,7 +20,13 @@ class Foi::RequestsController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @foi_request.update(foi_request_params)
+      redirect_to foi_request_suggestions_path(@foi_request)
+    else
+      render :edit
+    end
+  end
 
   private
 
