@@ -2,6 +2,7 @@
 
 class Foi::RequestsController < ApplicationController
   before_action :new_foi_request, only: %i[new create]
+  before_action :find_foi_request, only: %i[show]
 
   def index; end
 
@@ -25,6 +26,10 @@ class Foi::RequestsController < ApplicationController
 
   def new_foi_request
     @foi_request = FoiRequest.new
+  end
+
+  def find_foi_request
+    @foi_request = FoiRequest.find(params.require(:id))
   end
 
   def foi_request_params

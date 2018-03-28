@@ -77,9 +77,23 @@ RSpec.describe Foi::RequestsController, type: :controller do
   end
 
   describe 'GET #show' do
+    subject { get :show, params: { id: '1' } }
+
+    before do
+      allow(FoiRequest).to receive(:find).with('1').and_return(foi_request)
+    end
+
     it 'returns http success' do
-      get :show, params: { id: '1' }
-      expect(response).to have_http_status(200)
+      is_expected.to have_http_status(200)
+    end
+
+    it 'renders show view' do
+      is_expected.to render_template(:show)
+    end
+
+    it 'assigns foi_request' do
+      subject
+      expect(assigns(:foi_request)).to eq foi_request
     end
   end
 
