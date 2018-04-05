@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: redirect('foi/requests')
+
   namespace :foi do
     root to: redirect('foi/requests')
     resources :requests, except: %i[destroy] do
