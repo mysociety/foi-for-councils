@@ -10,10 +10,13 @@
 <div class="grid-row">
   <div class="column-two-thirds">
     <%= form_for @foi_request do |f| %>
-      <div class="form-group">
-        <%= f.label :body, 'Your request', class: 'form-label' %>
+      <%= f.group :body, class: 'form-group' do %>
+        <%= f.label :body, class: 'form-label' do %>
+          Your request
+          <%= f.error :body %>
+        <% end %>
         <%= f.text_area :body, class: 'form-control form-control-full-width js-session-store', rows: 10 %>
-      </div>
+      <% end %>
 
       <aside class="form-aside">
         <h2 class="heading-small">Tips for a quick response:</h2>
