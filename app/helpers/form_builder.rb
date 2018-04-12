@@ -24,6 +24,18 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag(:span, text, class: 'form-hint')
   end
 
+  def label(method, *args, &block)
+    options = args.extract_options!
+    hint_text = options.delete(:hint)
+    block ||= -> { args[0] }
+
+    @template.label(@object_name, method, objectify_options(options)) do
+      @template.safe_join(
+        [block.call, label_extras(method, hint_text)]
+      )
+    end
+  end
+
   private
 
   def error?(method)
@@ -33,5 +45,9 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def error_message_for(method)
     return unless error?(method)
     @object.errors.full_messages_for(method)[0]
+  end
+
+  def label_extras(method, hint_text)
+    @template.safe_join([hint(hint_text), error(method)])
   end
 end
