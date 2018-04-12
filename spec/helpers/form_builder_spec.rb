@@ -41,7 +41,7 @@ describe FormBuilder, type: :helper do
     subject { f.error(:full_name) }
 
     context 'with resource error' do
-      it 'return error message span' do
+      it 'return error message element' do
         allow(resource.errors).to receive(:full_messages_for) { ['Oops!'] }
         is_expected.to eq '<span class="error-message">Oops!</span>'
       end
@@ -49,6 +49,11 @@ describe FormBuilder, type: :helper do
 
     context 'without resource error' do
       before { resource.errors.clear }
+      it { is_expected.to be_nil }
+    end
+
+    context 'without method' do
+      subject { f.error nil }
       it { is_expected.to be_nil }
     end
   end

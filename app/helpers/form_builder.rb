@@ -13,8 +13,8 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag(:div, options, &block)
   end
 
-  def error(method)
-    error_message = error_message_for(method)
+  def error(method = nil)
+    error_message = error_message_for(method) if method
     return unless error_message
     @template.content_tag(:span, error_message, class: 'error-message')
   end
