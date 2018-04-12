@@ -11,7 +11,7 @@
       <%= f.group :full_name, class: 'form-group' do %>
         <%= f.label :full_name, class: 'form-label' do %>
           Full name
-          <span class="form-hint">For example, “Alice Brown”</span>
+          <%= f.hint 'For example, “Alice Brown”' %>
           <%= f.error :full_name %>
         <% end %>
         <%= f.text_field :full_name, class: 'form-control form-control-3-4 js-session-store' %>

@@ -57,4 +57,19 @@ describe FormBuilder, type: :helper do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#hint' do
+    context 'with text' do
+      subject { f.hint 'This is a hint' }
+
+      it 'returns hint element' do
+        is_expected.to eq '<span class="form-hint">This is a hint</span>'
+      end
+    end
+
+    context 'without text' do
+      subject { f.hint nil }
+      it { is_expected.to be_nil }
+    end
+  end
 end

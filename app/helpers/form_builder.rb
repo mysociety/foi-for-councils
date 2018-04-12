@@ -19,6 +19,11 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     @template.content_tag(:span, error_message, class: 'error-message')
   end
 
+  def hint(text = nil)
+    return unless text
+    @template.content_tag(:span, text, class: 'form-hint')
+  end
+
   private
 
   def error?(method)
