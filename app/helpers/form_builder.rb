@@ -27,7 +27,7 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def label(method, *args, &block)
     options = args.extract_options!
     hint_text = options.delete(:hint)
-    block ||= -> { args[0] }
+    block ||= -> { args[0] || label_translation(method, options[:value]) }
 
     @template.label(@object_name, method, objectify_options(options)) do
       @template.safe_join(
@@ -45,6 +45,12 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def error_message_for(method)
     return unless error?(method)
     @object.errors.full_messages_for(method)[0]
+  end
+
+  def label_translation(method, value)
+    ActionView::Helpers::Tags::Label::LabelBuilder.new(
+      @template, @object_name.to_s, method, @object, value
+    ).translation
   end
 
   def label_extras(method, hint_text)

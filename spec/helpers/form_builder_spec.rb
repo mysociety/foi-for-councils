@@ -103,6 +103,17 @@ describe FormBuilder, type: :helper do
           )
         end
       end
+
+      context 'with translated label' do
+        subject { f.label(:email, hint: 'This is a hint') }
+
+        it 'append hint after default label' do
+          is_expected.to eq(
+            '<label for="contact_email">Email address' + hint_html +
+            error_html + '</label>'
+          )
+        end
+      end
     end
 
     context 'with hint and without resource error' do
@@ -127,6 +138,16 @@ describe FormBuilder, type: :helper do
           )
         end
       end
+
+      context 'with translated label' do
+        subject { f.label(:email, hint: 'This is a hint') }
+
+        it 'append hint after default label' do
+          is_expected.to eq(
+            '<label for="contact_email">Email address' + hint_html + '</label>'
+          )
+        end
+      end
     end
 
     context 'without hint or resource error' do
@@ -145,6 +166,14 @@ describe FormBuilder, type: :helper do
 
         it 'append hint after block label' do
           is_expected.to eq '<label for="contact_full_name">Name</label>'
+        end
+      end
+
+      context 'with translated label' do
+        subject { f.label(:email) }
+
+        it 'append hint after default label' do
+          is_expected.to eq '<label for="contact_email">Email address</label>'
         end
       end
     end
