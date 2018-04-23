@@ -7,7 +7,7 @@ RSpec.describe 'HTTP auth', type: :request do
     before { ENV['HTTP_AUTH_PASSWORD'] = 'password' }
 
     it 'return 401 if not authorised' do
-      get '/foi/requests'
+      get '/foi'
       expect(response).to have_http_status(401)
     end
 
@@ -15,7 +15,7 @@ RSpec.describe 'HTTP auth', type: :request do
       auth = ActionController::HttpAuthentication::Basic.encode_credentials(
         'hackney-foi', 'invalid'
       )
-      get '/foi/requests', headers: { 'HTTP_AUTHORIZATION' => auth }
+      get '/foi', headers: { 'HTTP_AUTHORIZATION' => auth }
       expect(response).to have_http_status(401)
     end
 
@@ -23,7 +23,7 @@ RSpec.describe 'HTTP auth', type: :request do
       auth = ActionController::HttpAuthentication::Basic.encode_credentials(
         'hackney-foi', 'password'
       )
-      get '/foi/requests', headers: { 'HTTP_AUTHORIZATION' => auth }
+      get '/foi', headers: { 'HTTP_AUTHORIZATION' => auth }
       expect(response).to have_http_status(200)
     end
   end
