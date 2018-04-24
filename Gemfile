@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'foreman'
+gem 'prometheus_exporter'
 
 # Hackney theme
 gem 'govuk_elements_form_builder'
