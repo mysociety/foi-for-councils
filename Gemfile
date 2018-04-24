@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'foreman'
+
 # Hackney theme
 gem 'govuk_elements_form_builder'
 gem 'hackney_template', path: 'gems/hackney_template-0.0.2'

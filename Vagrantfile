@@ -35,7 +35,7 @@ Vagrant.configure('2') do |config|
   if SETTINGS['ip']
     config.vm.network :private_network, ip: SETTINGS['ip']
   else
-    config.vm.network :forwarded_port, guest: 3000, host: 3000
+    config.vm.network :forwarded_port, guest: 3000, host: 3000 # rails
   end
 
   config.vm.synced_folder '.', '/home/vagrant/app'
@@ -56,7 +56,7 @@ Vagrant.configure('2') do |config|
   config.vm.post_up_message = <<~EOT
     Log into the Vagrant box with \`vagrant ssh\`
       Run the test suite by \`./bin/rake\`
-      Start Rails server by \`./bin/rails server\`
+      Start Rails server by \`./bin/foreman start -p 3000\`
     Access the site at http://0.0.0.0:3000.
   EOT
 end
