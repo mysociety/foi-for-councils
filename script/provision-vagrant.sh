@@ -3,7 +3,7 @@ sudo apt-get update
 sudo apt-get -qq install -y autoconf bison build-essential libssl-dev \
   libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev \
   libgdbm3 libgdbm-dev git-core postgresql-9.6 postgresql-server-dev-9.6 \
-  postgresql-client-9.6 curl redis-server
+  postgresql-client-9.6 curl redis-server prometheus
 
 if [ ! -d "$HOME/.rbenv" ]; then
   echo 'Installing rbenv and ruby-build'
@@ -52,6 +52,20 @@ if ! grep -qe "^cd \\$HOME/app$" "./.bashrc"; then
   echo "cd \\$HOME/app" >> ./.bashrc
 fi
 cd "$HOME/app"
+
+if ! grep -qe "^  \- job_name: ruby$" "/etc/prometheus/prometheus.yml"; then
+  echo "Configure Prometheus Ruby job"
+  echo "  - job_name: ruby
+    static_configs:
+      - targets: ['localhost:9394']" |
+    sudo tee --append /etc/prometheus/prometheus.yml > /dev/null
+fi
+
+echo "Configure auto-start of Prometheus"
+sudo service prometheus start
+sudo service prometheus-node-exporter start
+sudo update-rc.d prometheus enable
+sudo update-rc.d prometheus-node-exporter enable
 
 echo 'Create PostgreSQL user'
 sudo -u postgres createuser --superuser $USER 2>/dev/null

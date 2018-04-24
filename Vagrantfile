@@ -36,6 +36,9 @@ Vagrant.configure('2') do |config|
     config.vm.network :private_network, ip: SETTINGS['ip']
   else
     config.vm.network :forwarded_port, guest: 3000, host: 3000 # rails
+    config.vm.network :forwarded_port, guest: 9090, host: 9090 # prometheus
+    config.vm.network :forwarded_port, guest: 9100, host: 9100 # prometheus node exporter
+    config.vm.network :forwarded_port, guest: 9394, host: 9394 # prometheus exporter
   end
 
   config.vm.synced_folder '.', '/home/vagrant/app'
