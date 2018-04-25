@@ -62,10 +62,10 @@ if ! grep -qe "^  \- job_name: ruby$" "/etc/prometheus/prometheus.yml"; then
 fi
 
 echo "Configure auto-start of Prometheus"
-sudo service prometheus start
-sudo service prometheus-node-exporter start
-sudo update-rc.d prometheus enable
-sudo update-rc.d prometheus-node-exporter enable
+sudo systemctl start prometheus
+sudo systemctl start prometheus-node-exporter
+sudo systemctl enable prometheus
+sudo systemctl enable prometheus-node-exporter
 
 echo 'Create PostgreSQL user'
 sudo -u postgres createuser --superuser $USER 2>/dev/null
