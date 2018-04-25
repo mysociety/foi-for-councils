@@ -18,7 +18,7 @@ RSpec.describe FindableFoiRequest do
   end
 
   describe 'GET #index' do
-    subject { get :index, params: { request_id: '1' } }
+    subject { get :index, session: { request_id: '1' } }
 
     context 'with foi_request' do
       it 'finds FOI request and sets instance variable' do
