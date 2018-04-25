@@ -7,6 +7,6 @@ FactoryBot.define do
   end
 
   factory :unqueued_foi_request, parent: :foi_request do
-    submission
+    association :submission, :unqueued
   end
 end
