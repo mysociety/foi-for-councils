@@ -16,7 +16,7 @@ module Foi
 
     def create
       if @contact.update(contact_params)
-        redirect_to foi_request_preview_path(@foi_request)
+        redirect_to preview_foi_request_path
       else
         render :new
       end
@@ -26,7 +26,7 @@ module Foi
 
     def update
       if @contact.update(contact_params)
-        redirect_to foi_request_preview_path(@foi_request)
+        redirect_to preview_foi_request_path
       else
         render :edit
       end
@@ -36,7 +36,7 @@ module Foi
 
     def redirect_if_exisiting_contact
       return unless @foi_request.contact
-      redirect_to edit_foi_request_contact_path(@foi_request)
+      redirect_to edit_foi_request_contact_path
     end
 
     def new_contact

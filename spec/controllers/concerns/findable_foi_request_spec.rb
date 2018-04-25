@@ -11,7 +11,7 @@ RSpec.describe FindableFoiRequest do
     include FindableFoiRequest
 
     def index
-      redirect_to edit_foi_request_path(@foi_request)
+      redirect_to edit_foi_request_path
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe FindableFoiRequest do
       it 'finds FOI request and sets instance variable' do
         expect(foi_request_scope).to receive(:find_by).
           with(id: '1').and_return(foi_request)
-        is_expected.to redirect_to(edit_foi_request_path(foi_request))
+        is_expected.to redirect_to(edit_foi_request_path)
       end
     end
 
