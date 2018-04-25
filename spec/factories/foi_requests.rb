@@ -9,4 +9,8 @@ FactoryBot.define do
   factory :unqueued_foi_request, parent: :foi_request do
     association :submission, :unqueued
   end
+
+  factory :queued_foi_request, parent: :foi_request do
+    association :submission, :queued
+  end
 end

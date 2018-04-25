@@ -36,10 +36,16 @@ RSpec.describe FoiRequest, type: :model do
   describe 'scopes' do
     let!(:pending) { create(:foi_request) }
     let!(:unqueued) { create(:unqueued_foi_request) }
+    let!(:queued) { create(:queued_foi_request) }
 
     describe '.unqueued' do
       subject { FoiRequest.unqueued }
       it { is_expected.to match [pending, unqueued] }
+    end
+
+    describe '.queued' do
+      subject { FoiRequest.queued }
+      it { is_expected.to match [queued] }
     end
   end
 end
