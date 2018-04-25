@@ -20,7 +20,7 @@ RSpec.describe FoiRequest, type: :model do
     end
 
     it 'removes Submission on destroy' do
-      request = create(:foi_request)
+      request = create(:unqueued_foi_request)
       expect { request.destroy }.to change { Submission.count }.by(-1)
     end
   end
@@ -30,6 +30,22 @@ RSpec.describe FoiRequest, type: :model do
       request.body = nil
       expect(request.valid?).to eq false
       expect(request.errors[:body]).to_not be_empty
+    end
+  end
+
+  describe 'scopes' do
+    let!(:pending) { create(:foi_request) }
+    let!(:unqueued) { create(:unqueued_foi_request) }
+    let!(:queued) { create(:queued_foi_request) }
+
+    describe '.unqueued' do
+      subject { FoiRequest.unqueued }
+      it { is_expected.to match [pending, unqueued] }
+    end
+
+    describe '.queued' do
+      subject { FoiRequest.queued }
+      it { is_expected.to match [queued] }
     end
   end
 end
