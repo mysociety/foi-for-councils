@@ -1,3 +1,6 @@
+:concurrency: 5
+production:
+  :concurrency: 25
 :schedule:
   QueueSubmissionsWorker:
     every: '5m'

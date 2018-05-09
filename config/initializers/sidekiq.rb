@@ -4,11 +4,17 @@ require_relative 'redis.rb'
 
 redis_connection = proc { Redis.current }
 
+unless Rails.env.production?
+  Sidekiq::Scheduler.rufus_scheduler_options = { max_work_threads: 5 }
+end
+
 Sidekiq.configure_server do |config|
   # https://github.com/moove-it/sidekiq-scheduler#notes-about-connection-pooling
-  config.redis = ConnectionPool.new(size: 58, &redis_connection)
+  size = Rails.env.production? ? 58 : 15
+  config.redis = ConnectionPool.new(size: size, &redis_connection)
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = ConnectionPool.new(size: 5, &redis_connection)
+  size = Rails.env.production? ? 5 : 1
+  config.redis = ConnectionPool.new(size: size, &redis_connection)
 end
