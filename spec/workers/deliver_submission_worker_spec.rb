@@ -45,9 +45,8 @@ RSpec.describe DeliverSubmissionWorker, type: :worker do
     before { lock.acquire! }
     after { lock.release! }
 
-    it 'does not call #deliver on submission' do
-      expect(submission).to_not receive(:deliver)
-      perform
+    it 'raises RetryJob exception' do
+      expect { perform }.to raise_error(DeliverSubmissionWorker::RetryJob)
     end
   end
 
