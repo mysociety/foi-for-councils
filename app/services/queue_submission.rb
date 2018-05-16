@@ -8,8 +8,9 @@ class QueueSubmission < SimpleDelegator
   def call
     success = ActiveRecord::Base.transaction do
       begin
-        jid = DeliverSubmissionWorker.perform_async(id)
-        update(state: Submission::QUEUED, jid: jid)
+        # double update otherwise `id` can be nil
+        update(state: Submission::QUEUED)
+        update(jid: DeliverSubmissionWorker.perform_async(id))
       rescue Redis::BaseConnectionError
         raise ActiveRecord::Rollback
       end
