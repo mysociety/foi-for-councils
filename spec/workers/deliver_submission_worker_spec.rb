@@ -31,15 +31,19 @@ RSpec.describe DeliverSubmissionWorker, type: :worker do
     end
   end
 
-  context 'when the submission has already been delivered' do
-
-  end
-
   context 'without a deliverable submission' do
     let(:submission) { nil }
 
     it 'does not raise any errors' do
       expect { perform }.to_not raise_error
+    end
+  end
+
+  context 'running it twice' do
+    it 'does not submit the API request twice' do
+      expect(submission).to receive(:deliver).once
+      perform
+      perform
     end
   end
 
