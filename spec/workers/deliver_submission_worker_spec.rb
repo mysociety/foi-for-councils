@@ -31,6 +31,10 @@ RSpec.describe DeliverSubmissionWorker, type: :worker do
     end
   end
 
+  context 'when the submission has already been delivered' do
+
+  end
+
   context 'without a deliverable submission' do
     let(:submission) { nil }
 
