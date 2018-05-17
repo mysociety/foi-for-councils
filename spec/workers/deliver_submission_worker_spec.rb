@@ -39,6 +39,14 @@ RSpec.describe DeliverSubmissionWorker, type: :worker do
     end
   end
 
+  context 'running it twice' do
+    it 'does not submit the API request twice' do
+      expect(submission).to receive(:deliver).once
+      perform
+      perform
+    end
+  end
+
   context 'when already locked' do
     let(:lock) { set_sidekiq_lock(described_class, 1) }
 

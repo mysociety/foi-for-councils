@@ -55,5 +55,18 @@ RSpec.describe DeliverSubmission, type: :service do
         expect { service.call }.to raise_error(Infreemation::GenericError)
       end
     end
+
+    context 'the submission has already been delivered' do
+      before do
+        allow(Infreemation::Request).to receive(:create!).with(attributes).
+          and_return(response)
+      end
+
+      it 'only sends the API request once' do
+        expect(Infreemation::Request).to receive(:create!).once
+        service.call
+        service.call
+      end
+    end
   end
 end

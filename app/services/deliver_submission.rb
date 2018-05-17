@@ -8,11 +8,13 @@ class DeliverSubmission < SimpleDelegator
   delegate :contact, to: :foi_request
 
   def call
-    request = Infreemation::Request.create!(attributes)
-    update(
-      state: Submission::DELIVERED,
-      reference: request.attributes[:ref]
-    )
+    unless successfully_delivered?
+      request = Infreemation::Request.create!(attributes)
+      update(
+        state: Submission::DELIVERED,
+        reference: request.attributes[:ref]
+      )
+    end
   end
 
   private
