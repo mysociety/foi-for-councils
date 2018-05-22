@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    root to: redirect('/admin/curated_links')
     resources :curated_links, except: [:show]
   end
 
