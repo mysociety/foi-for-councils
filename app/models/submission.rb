@@ -25,7 +25,7 @@ class Submission < ApplicationRecord
   end
 
   def deliverable?
-    state == QUEUED
+    state == DELIVERED
   end
 
   def delivered_successfully?
