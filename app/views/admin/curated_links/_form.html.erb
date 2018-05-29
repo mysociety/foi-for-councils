@@ -1,12 +1,12 @@
 <div class="grid-row">
   <div class="column-two-thirds">
     <%= form_for [:admin, @curated_link] do |f| %>
-      <%= f.text_field :title, class: 'form-control form-control-3-4', required: true %>
-      <%= f.url_field :url, class: 'form-control form-control-3-4', required: true %>
+      <%= f.text_field :title, placeholder: 'Grounds for disputing a PCN', class: 'form-control form-control-3-4', required: true %>
+      <%= f.url_field :url, placeholder: 'https://www.hackney.gov.uk/pcn-challenge', class: 'form-control form-control-3-4', required: true %>
 
-      <%= f.text_area :summary, class: 'form-control form-control-3-4' %>
+      <%= f.text_area :summary, placeholder: 'The Traffic Management Act 2004 gives statutory grounds or specific reasons to choose to dispute your PCN. If none of them apply, we will consider mitigating circumstances on a case by case basis.', class: 'form-control form-control-3-4' %>
 
-      <%= f.text_field :keywords, class: 'form-control form-control-3-4 js-session-store' %>
+      <%= f.text_field :keywords, placeholder: 'parking, fines, PCN, parking appeal', class: 'form-control form-control-3-4 js-session-store' %>
 
       <p class="cta-section">
         <%= f.submit 'Save Curated Link', class: 'button' %>
