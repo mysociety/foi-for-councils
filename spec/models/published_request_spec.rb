@@ -3,6 +3,50 @@
 require 'rails_helper'
 
 RSpec.describe PublishedRequest, type: :model do
+  describe '#update_payload_if_chanegd!' do
+    subject { published_request.update_payload_if_changed!(attributes) }
+
+    let!(:published_request) { create(:published_request) }
+
+    context 'when the dateclosed is ahead of the cached record' do
+      let(:attributes) do
+        attributes_for(:published_request)[:payload].
+          merge(dateclosed: Time.zone.tomorrow.to_s)
+      end
+
+      it 'updates with the new attributes' do
+        subject
+        expect(published_request.payload['dateclosed']).
+          to eq(Time.zone.tomorrow.to_s)
+      end
+
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when the dateclosed is the same as the cached record' do
+      let(:attributes) do
+        # Even though the attributes have changed, we shouldn't try to update
+        # because we're relying on them to provide a correct dateclosed so that
+        # we reduce DB writes.
+        attributes_for(:published_request)[:payload].merge(keywords: 'new')
+      end
+
+      before do
+        # Clear changes information from initial save
+        # See http://api.rubyonrails.org/classes/ActiveModel/Dirty.html#
+        # method-i-clear_changes_information
+        published_request.clear_changes_information
+      end
+
+      it 'does not update the record' do
+        subject
+        expect(published_request.previous_changes).to be_empty
+      end
+
+      it { is_expected.to eq(false) }
+    end
+  end
+
   describe '#save' do
     let(:published_request) { build(:published_request) }
 

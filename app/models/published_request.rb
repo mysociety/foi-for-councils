@@ -6,6 +6,14 @@
 class PublishedRequest < ApplicationRecord
   before_save :update_cached_columns
 
+  def update_payload_if_changed!(attrs)
+    if Date.parse(payload['dateclosed']) < Date.parse(attrs[:dateclosed])
+      update!(payload: attrs)
+    else
+      false
+    end
+  end
+
   private
 
   def update_cached_columns
