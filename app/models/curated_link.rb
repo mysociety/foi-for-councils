@@ -13,7 +13,7 @@ class CuratedLink < ApplicationRecord
   end
 
   def csv_columns
-    %i[id title url keywords shown click_rate answer_rate]
+    %i[id title url keywords shown click_rate answer_rate created_at updated_at]
   end
 
   def as_csv

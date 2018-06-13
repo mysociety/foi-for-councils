@@ -27,7 +27,8 @@ RSpec.describe Admin::ExportsController, type: :controller do
       lines = response.body.split("\n")
 
       expect(lines).to include(
-        'id,title,url,keywords,shown,click_rate,answer_rate'
+        'id,title,url,keywords,shown,' \
+        'click_rate,answer_rate,created_at,updated_at'
       )
     end
 
@@ -35,10 +36,10 @@ RSpec.describe Admin::ExportsController, type: :controller do
       link = suggestion.resource
       lines = response.body.split("\n")
 
-      expect(lines).to include(
-        [link.id, link.title, link.url, link.keywords, link.shown,
-         link.click_rate, link.answer_rate].join(',')
-      )
+      expect(lines).to include([
+        link.id, link.title, link.url, link.keywords, link.shown,
+        link.click_rate, link.answer_rate, link.created_at, link.updated_at
+      ].join(','))
     end
   end
 end
