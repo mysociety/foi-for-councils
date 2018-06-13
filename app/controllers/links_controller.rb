@@ -5,9 +5,11 @@
 # resources
 #
 class LinksController < ApplicationController
+  include FindableFoiRequest
+
   def show
     suggestion = FoiSuggestion.find(params[:id])
-    suggestion.clicked!
+    suggestion.clicked! if current_foi_request?(suggestion.foi_request)
     redirect_to suggestion.url
   end
 end
