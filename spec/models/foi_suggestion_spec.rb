@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe FoiSuggestion, type: :model do
   let(:suggestion) { build_stubbed(:foi_suggestion) }
 
-  describe 'assoications' do
+  describe 'associations' do
     it 'belongs to a FOI request' do
       expect(suggestion.build_foi_request).to be_a FoiRequest
     end

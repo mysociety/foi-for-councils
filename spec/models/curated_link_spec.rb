@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe CuratedLink, type: :model do
   let(:curated_link) { build_stubbed(:curated_link) }
 
-  describe 'assoications' do
+  describe 'associations' do
     it 'has many FOI suggestions' do
       expect(curated_link.foi_suggestions.new).to be_a FoiSuggestion
     end
