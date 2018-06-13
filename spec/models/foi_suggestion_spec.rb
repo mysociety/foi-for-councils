@@ -59,7 +59,7 @@ RSpec.describe FoiSuggestion, type: :model do
   end
 
   describe '.from_request' do
-    it 'delegate to GenerateFoiSuggestion service' do
+    it 'delegates to GenerateFoiSuggestion service' do
       request = double(:request)
       expect(GenerateFoiSuggestion).to receive(:from_request).with(request)
       described_class.from_request(request)

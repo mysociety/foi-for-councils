@@ -25,7 +25,7 @@ RSpec.describe GenerateFoiSuggestion, type: :service do
       expect { suggestion.reload }.to change(suggestion, :relevance)
     end
 
-    it 'iniialise new suggestions' do
+    it 'initialise new suggestions' do
       expect { suggest_all('Council budget') }.to change(FoiSuggestion, :count).
         by(2)
     end
