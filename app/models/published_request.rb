@@ -6,6 +6,16 @@
 class PublishedRequest < ApplicationRecord
   before_save :update_cached_columns
 
+  def self.create_or_update_from_api!(attrs)
+    existing = find_by(reference: attrs[:ref])
+
+    if existing
+      existing.update_payload_if_changed!(attrs)
+    else
+      create!(payload: attrs)
+    end
+  end
+
   def update_payload_if_changed!(attrs)
     if Date.parse(payload['dateclosed']) < Date.parse(attrs[:dateclosed])
       update!(payload: attrs)
