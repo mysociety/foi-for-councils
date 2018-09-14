@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/resque/redis-namespace.git
-  revision: 918a8fa245c78aef35fd74b200c6f4f816be2614
+  revision: 01f2ce7075f0f226be4ca12fe10a8f7888ee0899
   specs:
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
