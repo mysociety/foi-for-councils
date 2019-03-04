@@ -1,0 +1,7 @@
+<%= form_for [:admin, @performance] do |f| %>
+  <%= f.number_field :percentage, class: 'form-control-full-width', required: true %>
+
+  <p class="cta-section">
+    <%= f.submit 'Save', class: 'button' %>
+  </p>
+<% end %>

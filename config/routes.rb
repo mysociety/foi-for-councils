@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         resource :export, only: [:show], format: 'csv'
       end
     end
+    resources :performances, only: %i[index new create]
   end
 
   namespace :health do
