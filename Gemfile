@@ -37,7 +37,7 @@ gem 'hackney_template', path: 'gems/hackney_template-0.0.2'
 gem 'infreemation'
 
 # Background workers
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.1'
 gem 'redis-namespace', github: 'resque/redis-namespace'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
