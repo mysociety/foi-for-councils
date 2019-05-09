@@ -5,7 +5,7 @@ module Admin
   # This controller is responsible for updating the performance percentage
   #
   class PerformancesController < AdminController
-    def index; end
+    def show; end
 
     def new
       @performance = Performance.new
@@ -15,7 +15,7 @@ module Admin
       @performance = Performance.new
 
       if @performance.update(performance_params)
-        redirect_to admin_performances_path,
+        redirect_to admin_performance_path,
                     notice: 'Performance percentage successfully updated'
       else
         render :new
