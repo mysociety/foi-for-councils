@@ -104,9 +104,8 @@ GEM
     infreemation (0.1.0)
       json (~> 2.1.0)
       rest-client (~> 2.0.2)
-    jbuilder (2.7.0)
+    jbuilder (2.9.1)
       activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     json (2.1.0)
     jwt (2.1.0)
     libv8 (6.7.288.46.1)
@@ -298,7 +297,7 @@ DEPENDENCIES
   govuk_elements_form_builder
   hackney_template!
   infreemation
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.9)
   listen (>= 3.0.5, < 3.2)
   mini_racer
   omniauth-google-oauth2
