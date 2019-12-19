@@ -11,8 +11,6 @@ before_script:
   - cp config/database.yml-travis config/database.yml
 before_install:
   - "echo '--colour' > ~/.rspec"
-  - gem install bundler
-  - gem update --system
 install: bundle install
 notifications:
   email: false
