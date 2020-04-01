@@ -1,3 +1,0 @@
-test:
-  adapter: postgresql
-  database: foi_for_councils_test

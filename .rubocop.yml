@@ -6,6 +6,7 @@ AllCops:
     - 'config/rails_env.rb'
     - 'gems/**/*'
     - 'lib/mysociety/validate.rb'
+    - 'vendor/**/*'
   TargetRubyVersion: 2.4
 
 Metrics/BlockLength:
