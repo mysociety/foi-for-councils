@@ -35,7 +35,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-export RUBY_VERSION='2.5.3'
+export RUBY_VERSION='2.5.8'
 if [ ! -d "$HOME/.rbenv/versions/$RUBY_VERSION" ]; then
   echo 'Installing ruby and bundler'
   rbenv install $RUBY_VERSION
