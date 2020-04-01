@@ -1,9 +1,10 @@
 AllCops:
   Exclude:
     - 'Vagrantfile'
+    - 'bin/bundle'
+    - 'config/rails_env.rb'
     - 'db/migrate/**'
     - 'db/schema.rb'
-    - 'config/rails_env.rb'
     - 'gems/**/*'
     - 'lib/mysociety/validate.rb'
     - 'vendor/**/*'
