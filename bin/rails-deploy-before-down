@@ -20,6 +20,9 @@ ln -snf "$shared_dir"/config/master.key config/master.key
 # Symlink logs directory
 ln -snf "$vhost_root"/applogs log
 
-bin/bundle install --without development test --deployment --path vendor/bundle
+bin/bundle config set deployment 'true'
+bin/bundle config set path 'vendor/bundle'
+bin/bundle config set without 'development test'
+bin/bundle install
 
 bin/rails assets:precompile
