@@ -88,13 +88,41 @@ RSpec.describe Foi::ContactsController, type: :controller do
   describe 'GET #edit' do
     subject { get :edit, session: { request_id: '1' } }
 
-    it 'returns http success' do
-      is_expected.to have_http_status(200)
+    context 'no contact' do
+      subject { get :edit, session: { request_id: '1' } }
+      before { allow(foi_request).to receive(:contact).and_return(nil) }
+
+      it 'redirects to new contact' do
+        is_expected.to redirect_to(new_foi_request_contact_path)
+      end
+    end
+
+    context 'existing contact' do
+      it 'returns http success' do
+        is_expected.to have_http_status(200)
+      end
     end
   end
 
   describe 'PUT #update' do
     before { allow(foi_request).to receive(:contact).and_return(contact) }
+
+    context 'no contact' do
+      subject do
+        put :update, params: { contact: valid_params },
+                     session: { request_id: '1' }
+      end
+      before { allow(foi_request).to receive(:contact).and_return(nil) }
+
+      it 'does not receive attributes' do
+        expect(contact).to_not receive(:update)
+        subject
+      end
+
+      it 'redirects to new contact' do
+        is_expected.to redirect_to(new_foi_request_contact_path)
+      end
+    end
 
     context 'valid parameters' do
       subject do
