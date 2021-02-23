@@ -37,9 +37,9 @@ gem 'hackney_template', path: 'gems/hackney_template-0.0.2'
 gem 'infreemation'
 
 # Background workers
-gem 'redis', '~> 4.2'
+gem 'redis', '~> 4.1.0'
 gem 'redis-namespace'
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2'
 gem 'sidekiq-scheduler'
 
 # Error reporting

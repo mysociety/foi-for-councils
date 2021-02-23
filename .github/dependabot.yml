@@ -6,3 +6,8 @@ updates:
       interval: weekly
     open-pull-requests-limit: 99
     rebase-strategy: "disabled"
+    ignore:
+      # requires Redis 4+
+      - dependency-name: sidekiq
+        versions:
+        - ">= 6.0.0"
