@@ -1,3 +1,8 @@
+---
+require:
+  - rubocop-performance
+  - rubocop-rails
+
 AllCops:
   Exclude:
     - 'Vagrantfile'
@@ -8,6 +13,8 @@ AllCops:
     - 'gems/**/*'
     - 'lib/mysociety/validate.rb'
     - 'vendor/**/*'
+  NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 2.4
 
 Metrics/BlockLength:
@@ -16,7 +23,8 @@ Metrics/BlockLength:
     - 'spec/**/*_spec.rb'
     - 'config/routes.rb'
 
-Metrics/LineLength:
+Layout/LineLength:
+  Max: 80
   IgnoredPatterns:
     - '^\s*it\s+.*do$'
     - '^\s*context\s+.*do$'

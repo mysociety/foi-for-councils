@@ -53,7 +53,7 @@ RSpec.describe DisclosureLog, type: :service do
 
     # This request is outside the default start_date of 1 year ago
     # It is not returned by the feed
-    let!(:published_request_1) do
+    let!(:published_request1) do
       create(:published_request,
              payload: { ref: 'FOI-1',
                         datepublished: Time.zone.parse('2010-01-01'),
@@ -65,7 +65,7 @@ RSpec.describe DisclosureLog, type: :service do
 
     # This request is inside the window of results that we may expect
     # It is returned by the feed
-    let!(:published_request_2) do
+    let!(:published_request2) do
       create(:published_request,
              payload: { ref: 'FOI-2',
                         datepublished: Time.zone.parse('2018-06-17'),
@@ -77,7 +77,7 @@ RSpec.describe DisclosureLog, type: :service do
 
     # This request is inside the window of results that we may expect
     # It is not returned by the feed
-    let!(:published_request_3) do
+    let!(:published_request3) do
       create(:published_request,
              payload: { ref: 'FOI-3',
                         datepublished: Time.zone.parse('2018-06-17'),
@@ -90,7 +90,7 @@ RSpec.describe DisclosureLog, type: :service do
     # This request is inside the window of results that we may expect
     # It is returned by the feed
     # It has an empty datepublished so will be deleted
-    let!(:published_request_4) do
+    let!(:published_request4) do
       create(:published_request,
              payload: { ref: 'FOI-4',
                         datepublished: Time.zone.parse('2018-06-17'),
@@ -102,23 +102,23 @@ RSpec.describe DisclosureLog, type: :service do
 
     it 'keeps requests that are older than the start date param of the import' do
       subject.import!
-      expect(published_request_1.reload).to be_persisted
+      expect(published_request1.reload).to be_persisted
     end
 
     it 'keeps requests inside the import window that are returned by the feed' do
       subject.import!
-      expect(published_request_2.reload).to be_persisted
+      expect(published_request2.reload).to be_persisted
     end
 
     it 'destroys requests inside the import window that are not returned by the feed' do
       subject.import!
-      expect { published_request_3.reload }.
+      expect { published_request3.reload }.
         to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'destroys requests inside the import window that have a blank datepublished' do
       subject.import!
-      expect { published_request_4.reload }.
+      expect { published_request4.reload }.
         to raise_error(ActiveRecord::RecordNotFound)
     end
   end

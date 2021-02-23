@@ -7,7 +7,7 @@ require 'bundler/setup' # Set up gems listed in the Gemfile.
 begin
   require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
 rescue LoadError
-  STDERR.puts "Couldn't find Bootsnap in the current environment"
+  warn "Couldn't find Bootsnap in the current environment"
 end
 
 # TODO: Remove this. This is a hacky system for having a default environment.

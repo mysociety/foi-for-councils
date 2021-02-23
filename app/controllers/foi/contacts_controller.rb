@@ -37,6 +37,7 @@ module Foi
 
     def redirect_if_exisiting_contact
       return unless @foi_request.contact
+
       redirect_to edit_foi_request_contact_path
     end
 

@@ -2,14 +2,13 @@
 
 require 'rails_helper'
 
-RSpec.describe CSVExporter, type: :service do
-  Mock = Struct.new(:name, :time)
-  class MockEvent < Mock
-    def self.csv_columns
-      %i[name time]
-    end
+MockEvent = Struct.new(:name, :time) do
+  def self.csv_columns
+    %i[name time]
   end
+end
 
+RSpec.describe CSVExporter, type: :service do
   let(:objects) { [MockEvent.new('event', Time.utc(2018, 6, 20, 15, 30))] }
   subject(:export) { described_class.new(objects) }
 

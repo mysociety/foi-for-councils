@@ -5,11 +5,11 @@
 #
 class GenerateFoiSuggestion
   def self.from_request(request)
-    Resource.find_by_sql([sql, request: request]).map do |resource|
+    Resource.find_by_sql([sql, { request: request }]).map do |resource|
       create_or_update(request, resource)
     end
-  rescue ActiveRecord::StatementInvalid => ex
-    ExceptionNotifier.notify_exception(ex)
+  rescue ActiveRecord::StatementInvalid => e
+    ExceptionNotifier.notify_exception(e)
     []
   end
 
@@ -26,7 +26,7 @@ class GenerateFoiSuggestion
   end
 
   def self.sql
-    <<~SQL
+    <<~SQL.squish
       SELECT request_matches, relevance, resources.*
       FROM resources,
       LATERAL (#{request_matches}) AS T1(request_matches),
@@ -41,7 +41,7 @@ class GenerateFoiSuggestion
   # Rank resources on the request keyword matches against the title, summary
   # or keywords - with different weighting for each
   def self.relevance
-    <<~SQL
+    <<~SQL.squish
       SELECT ts_rank(
         setweight(to_tsvector(title), 'B') ||
         setweight(to_tsvector(COALESCE(summary, '')), 'C') ||
@@ -55,7 +55,7 @@ class GenerateFoiSuggestion
   # Aggregate matched keywords wrapped in a <b> tags into an array and giving us
   # an idea of the intent of the request
   def self.request_matches
-    <<~SQL
+    <<~SQL.squish
       SELECT ARRAY_AGG(DISTINCT rm[1])
       FROM (#{request_headline}) AS T(headline)
       CROSS JOIN LATERAL regexp_matches(headline, '<b>(.*?)</b>', 'g') AS rm(matches)
@@ -66,7 +66,7 @@ class GenerateFoiSuggestion
   # Generate a headline string which wraps matching keywords in a <b> tag. This
   # includes keyword stems
   def self.request_headline
-    <<~SQL
+    <<~SQL.squish
       SELECT ts_headline(LOWER(body), to_tsquery((#{keywords_query})))
       FROM foi_requests
       WHERE foi_requests.id = :request
@@ -78,7 +78,7 @@ class GenerateFoiSuggestion
   # Build a query of keywords to be passed into to_tsquery using the OR operator
   # and the AND operator for two or more words together
   def self.keywords_query
-    <<~SQL
+    <<~SQL.squish
       SELECT array_to_string(ARRAY_AGG(
         regexp_replace(
           '(''' ||
@@ -98,7 +98,7 @@ class GenerateFoiSuggestion
 
   # Get a unique list of all comma separated keywords from current resources
   def self.keywords
-    <<~SQL
+    <<~SQL.squish
       SELECT DISTINCT UNNEST(
         regexp_split_to_array(replace(keywords, '''', ''''''), ',\s*')
       )

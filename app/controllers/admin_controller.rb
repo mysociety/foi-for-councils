@@ -26,6 +26,7 @@ class AdminController < ApplicationController
 
   def current_user
     return unless session[:current_user]
+
     @current_user ||= User.find_by(uid: session[:current_user])
   end
 
