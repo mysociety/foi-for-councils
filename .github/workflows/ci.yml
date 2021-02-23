@@ -7,7 +7,7 @@ on:
 
 jobs:
   rspec:
-    name: Ruby ${{ matrix.ruby }}
+    name: Ruby
     runs-on: ubuntu-20.04
     services:
       postgres:
