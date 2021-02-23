@@ -17,7 +17,7 @@ class AdminController < ApplicationController
     return if authenticate?
 
     session[:redirect_to] = request.fullpath if request.method == 'GET'
-    redirect_to '/auth/google'
+    redirect_to '/auth/sign_in'
   end
 
   def authenticate?

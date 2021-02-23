@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   get '/auth/failure', to: 'sessions#new'
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/sign_in', to: 'sessions#new'
   delete '/auth/sign_out', to: 'sessions#destroy'
 
   resolve('FoiRequest') { %i[foi request] }
