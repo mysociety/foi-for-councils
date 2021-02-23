@@ -30,6 +30,7 @@ module FindableFoiRequest
 
     def redirect_if_missing_request
       return if @foi_request
+
       redirect_to new_foi_request_path
     end
 

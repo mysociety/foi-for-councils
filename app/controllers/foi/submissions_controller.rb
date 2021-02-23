@@ -37,6 +37,7 @@ module Foi
 
     def redirect_if_missing_contact
       return if @foi_request.contact
+
       redirect_to new_foi_request_contact_path
     end
 
