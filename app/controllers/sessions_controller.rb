@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if params[:message] == 'invalid_credentials'
       render file: 'public/401.html', status: :unauthorized, layout: false
     else
-      redirect_to '/auth/google'
+      render :new
     end
   end
 

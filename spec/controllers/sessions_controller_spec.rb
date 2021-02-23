@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :controller do
 
     context 'other errors' do
       subject { get :new, params: { message: 'other' } }
-      it { is_expected.to redirect_to('/auth/google') }
+      it { is_expected.to have_http_status(200) }
     end
   end
 

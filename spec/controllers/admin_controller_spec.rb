@@ -27,7 +27,7 @@ RSpec.describe AdminController, type: :controller do
         current_user: 789,
         authenticated_until: (Time.zone.now + 1.minute).to_i
       }
-      expect(response).to redirect_to('/auth/google')
+      expect(response).to redirect_to('/auth/sign_in')
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe AdminController, type: :controller do
         current_user: 123,
         authenticated_until: (Time.zone.now - 1.minute).to_i
       }
-      expect(response).to redirect_to('/auth/google')
+      expect(response).to redirect_to('/auth/sign_in')
     end
   end
 end

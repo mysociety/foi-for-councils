@@ -45,7 +45,9 @@ gem 'sidekiq-scheduler'
 # Error reporting
 gem 'exception_notification'
 
+gem 'omniauth', '~> 2.0.1'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 gem 'scenic'
 
