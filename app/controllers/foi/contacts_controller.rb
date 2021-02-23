@@ -10,6 +10,7 @@ module Foi
 
     before_action :find_foi_request
     before_action :redirect_if_exisiting_contact, only: %i[new create]
+    before_action :redirect_if_no_contact, only: %i[edit update]
     before_action :new_contact, only: %i[new create]
     before_action :find_contact, only: %i[edit update]
 
@@ -43,6 +44,12 @@ module Foi
 
     def new_contact
       @contact = @foi_request.build_contact
+    end
+
+    def redirect_if_no_contact
+      return if @foi_request.contact
+
+      redirect_to new_foi_request_contact_path
     end
 
     def find_contact
