@@ -198,7 +198,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.0.1)
+    redis (4.2.5)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -307,7 +307,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 5.1)
   rails (~> 5.2.4)
-  redis (~> 4.0)
+  redis (~> 4.2)
   redis-namespace!
   rspec-rails (~> 4.0)
   rubocop (~> 0.54.0)
