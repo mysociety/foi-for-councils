@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery.min
-//= require src/taggle
+//= require jquery
+//= require taggle/src/taggle
 //= require rails-ujs
 //= require turbolinks
 //= require_tree ./application

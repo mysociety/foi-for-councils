@@ -1,5 +1,8 @@
 {
   "name": "foi_for_councils",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "1.12.4",
+    "taggle": "^1.15.0"
+  }
 }
