@@ -24,7 +24,7 @@ RSpec.describe Admin::ExportsController, type: :controller do
 
     it 'should return a CSV' do
       is_expected.to have_http_status(200)
-      expect(response.content_type).to eq 'text/csv'
+      expect(response.media_type).to eq 'text/csv'
     end
 
     it 'should have CSV headers' do
