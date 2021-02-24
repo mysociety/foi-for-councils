@@ -9,11 +9,9 @@ class QueueSubmission < SimpleDelegator
     update(state: Submission::QUEUED)
 
     ActiveRecord::Base.transaction do
-      begin
-        update(job_id: DeliverSubmissionWorker.perform_async(id))
-      rescue Redis::BaseConnectionError
-        raise ActiveRecord::Rollback
-      end
+      update(job_id: DeliverSubmissionWorker.perform_async(id))
+    rescue Redis::BaseConnectionError
+      raise ActiveRecord::Rollback
     end || update(state: Submission::UNQUEUED)
   end
 end
