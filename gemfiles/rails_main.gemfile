@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+# BUNDLE_GEMFILE=gemfiles/rails_main.gemfile
+
+ENV['RAILS_VERSION'] = 'main'
+
+eval_gemfile File.expand_path('../Gemfile', __dir__)
