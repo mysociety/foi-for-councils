@@ -7,8 +7,17 @@ on:
 
 jobs:
   rspec:
-    name: Ruby
+    name: Ruby ${{ matrix.ruby }} / ${{ matrix.gemfile || 'Gemfile' }}
     runs-on: ubuntu-20.04
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - { ruby: 2.6 }
+        - { ruby: 2.7 }
+        - { ruby: 2.7, gemfile: 'gemfiles/rails_main.gemfile' }
+
     services:
       postgres:
         image: postgres:9.6
@@ -32,6 +41,7 @@ jobs:
           --health-retries 5
 
     env:
+      BUNDLE_GEMFILE: ${{ matrix.gemfile || 'Gemfile' }}
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/alaveteli_test
       REDIS_URL: redis://localhost:6379/0
       RAILS_ENV: test
@@ -42,6 +52,7 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
+        ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
 
     - name: Setup database
