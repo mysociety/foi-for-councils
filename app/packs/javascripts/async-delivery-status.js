@@ -1,4 +1,4 @@
-/* global $ */
+import $ from 'jquery'
 
 var checkDeliveryStatus = function () {
   var $box = $(this)

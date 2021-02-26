@@ -1,4 +1,4 @@
-/* global $ */
+import $ from 'jquery'
 
 var updateCuratedLinkPreview = function (inputs, previews) {
     previews.$url.attr('href', inputs.$url.val() || '#')

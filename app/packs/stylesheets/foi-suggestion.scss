@@ -33,8 +33,8 @@
             display: inline-block;
             width: 16px;
             height: 16px;
-            background: transparent url(asset_path('link-external.png')) 0 0 no-repeat;
-            background-image: url(asset_path('link-external.svg')), none;
+            background: transparent url('../images/link-external.png') 0 0 no-repeat;
+            background-image: url('../images/link-external.svg'), none;
             margin-left: 0.5em;
         }
     }

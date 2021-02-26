@@ -14,6 +14,10 @@ cd "$rails_root"
 mkdir -p "$shared_dir"/vendor/bundle
 ln -snf "$shared_dir"/vendor/bundle vendor/bundle
 
+# Install node_modules into shared path that persists between deploys
+mkdir -p "$shared_dir"/vendor/node_modules
+ln -snf "$shared_dir"/vendor/node_modules vendor/node_modules
+
 # Symlink logs directory
 ln -snf "$vhost_root"/applogs log
 
@@ -21,5 +25,12 @@ bin/bundle config set deployment 'true'
 bin/bundle config set path 'vendor/bundle'
 bin/bundle config set without 'development test'
 bin/bundle install
+
+bin/yarn config set path 'vendor/node_modules'
+bin/yarn install --ignore-engines \
+  --ignore-optional \
+  --ignore-scripts \
+  --production \
+  --pure-lockfile
 
 bin/rails assets:precompile
