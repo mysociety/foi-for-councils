@@ -1,7 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint           not null, primary key
+#  email      :string
+#  name       :string
+#  provider   :string
+#  uid        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+
 ##
-# This model represents a user which has authenticate via OmniAuth
+# This model represents a user which has authenticate via OmniAuth.
 #
 class User < ApplicationRecord
   def self.find_or_create_with_omniauth(auth_hash)

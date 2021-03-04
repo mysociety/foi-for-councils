@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 ##
-# Value object for PublishedRequest and CuratedLink summary attributes
+# Value object for PublishedRequest and CuratedLink summary attributes.
 #
 class Summary < SimpleDelegator
   include ActionView::Helpers::SanitizeHelper

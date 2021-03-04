@@ -1,7 +1,22 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: foi_suggestions
+#
+#  id              :bigint           not null, primary key
+#  clicks          :integer          default(0), not null
+#  relevance       :decimal(7, 6)
+#  request_matches :string
+#  resource_type   :string
+#  submissions     :integer          default(0), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  foi_request_id  :bigint
+#  resource_id     :bigint
+
 ##
-# This model represents an suggested answer to an FOI requests
+# This model represents an suggested answer to an FOI requests.
 #
 class FoiSuggestion < ApplicationRecord
   belongs_to :foi_request, optional: true

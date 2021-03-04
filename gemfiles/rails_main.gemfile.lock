@@ -93,6 +93,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     bindex (0.8.1)
     bootsnap (1.7.2)
@@ -340,6 +343,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate (~> 3.1.0)
   bootsnap (>= 1.1.0)
   byebug
   exception_notification
