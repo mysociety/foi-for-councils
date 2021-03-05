@@ -93,7 +93,7 @@ RSpec.describe DisclosureLog, type: :service do
     let!(:published_request4) do
       create(:published_request,
              payload: { ref: 'FOI-4',
-                        datepublished: Time.zone.parse('2018-06-17'),
+                        datepublished: '',
                         datecreated: Time.zone.parse('2018-06-17'),
                         subject: 's',
                         requestbody: 'b',
