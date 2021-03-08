@@ -2,6 +2,16 @@
 
 require 'mysociety/validate'
 
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id         :bigint           not null, primary key
+#  email      :string           not null
+#  full_name  :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+
 ##
 # This model represents a contact details of an user.
 #

@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: submissions
+#
+#  id         :bigint           not null, primary key
+#  reference  :string
+#  state      :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  job_id     :string
+
 ##
 # This model represents the state of a submission to external case management
 # software.

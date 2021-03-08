@@ -1,5 +1,21 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: published_requests
+#
+#  id             :bigint           not null, primary key
+#  api_created_at :datetime
+#  keywords       :string
+#  payload        :jsonb
+#  published_at   :datetime
+#  reference      :string
+#  summary        :text
+#  title          :string
+#  url            :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+
 ##
 # A cache of published FOI requests and responses from the disclosure log.
 #

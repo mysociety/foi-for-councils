@@ -1,7 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: resources
+#
+#  keywords      :string
+#  resource_type :text
+#  summary       :text
+#  title         :string
+#  url           :string
+#  resource_id   :bigint
+
 ##
-# Union of CuratedLink and PublishedRequest powered by a Postgres view
+# Union of CuratedLink and PublishedRequest powered by a Postgres view.
 #
 class Resource < ApplicationRecord
   belongs_to :resource, polymorphic: true

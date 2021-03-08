@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: foi_requests
+#
+#  id            :bigint           not null, primary key
+#  body          :text             not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  contact_id    :bigint
+#  submission_id :bigint
+
 ##
 # This model represents an FOI request.
 #

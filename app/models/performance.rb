@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: performances
+#
+#  id         :bigint           not null, primary key
+#  percentage :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+
 ##
-# This model represents the performance percentage of the organisation
+# This model represents the performance percentage of the organisation.
 #
 class Performance < ApplicationRecord
   validates :percentage, presence: true, numericality: {
