@@ -6,9 +6,10 @@
 class DisclosureLog
   attr_reader :start_date, :end_date
 
-  def initialize(start_date: nil, end_date: nil)
+  def initialize(start_date: nil, end_date: nil, case_management: nil)
     @start_date = start_date || Time.zone.today.beginning_of_year
     @end_date = end_date || Time.zone.today
+    @case_management = case_management || CaseManagement::Infreemation.new
   end
 
   def import!
@@ -21,14 +22,18 @@ class DisclosureLog
   end
 
   def import
-    Infreemation::Request.where(query_params).map do |request|
-      PublishedRequest.create_update_or_destroy_from_api!(request.attributes)
+    case_management.published_requests(query_params).map do |request|
+      PublishedRequest.create_update_or_destroy_from_api!(request)
     end
   end
+
+  protected
+
+  attr_reader :case_management
 
   private
 
   def query_params
-    { rt: 'published', startdate: start_date, enddate: end_date }
+    { start_date: start_date, end_date: end_date }
   end
 end
