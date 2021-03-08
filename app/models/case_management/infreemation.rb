@@ -21,6 +21,18 @@ module CaseManagement
       SubmittedRequest.new(request)
     end
 
+    def published_requests(query_params)
+      client_params = {
+        rt: 'published',
+        startdate: query_params[:start_date],
+        enddate: query_params[:end_date]
+      }
+
+      client.
+        where(client_params).
+        map { |request| PublishedRequest.new(request) }
+    end
+
     protected
 
     attr_reader :client
