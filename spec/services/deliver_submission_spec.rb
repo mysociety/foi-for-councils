@@ -8,25 +8,18 @@ RSpec.describe DeliverSubmission, type: :service do
     build(:foi_request, :queued, contact: contact, body: 'A FOI request')
   end
   let(:submission) { foi_request.submission }
-  let(:response) { Infreemation::Request.new(ref: '001') }
-  let(:attributes) do
-    {
-      rt: 'create',
-      type: 'FOI',
-      requester: 'Worf',
-      contact: 'worf@ufp',
-      contacttype: 'email',
-      body: 'A FOI request'
-    }
-  end
+  let(:submitted_request) { double(reference: '001') }
+  let(:case_management) { double(submit_foi_request!: submitted_request) }
 
-  subject(:service) { described_class.new(submission) }
+  subject(:service) do
+    described_class.new(submission, case_management: case_management)
+  end
 
   describe '#call' do
     context 'successful response' do
       before do
-        allow(Infreemation::Request).to receive(:create!).with(attributes).
-          and_return(response)
+        expect(case_management).to receive(:submit_foi_request!).
+          with(name: 'Worf', email: 'worf@ufp', body: 'A FOI request')
       end
 
       it 'changes the state to delivered' do
@@ -47,12 +40,13 @@ RSpec.describe DeliverSubmission, type: :service do
 
     context 'unsuccessful response' do
       before do
-        allow(Infreemation::Request).to receive(:create!).with(attributes).
-          and_raise(Infreemation::GenericError)
+        allow(case_management).
+          to receive(:submit_foi_request!).
+          and_raise(StandardError)
       end
 
       it 'does not capture the exception' do
-        expect { service.call }.to raise_error(Infreemation::GenericError)
+        expect { service.call }.to raise_error(StandardError)
       end
     end
   end
