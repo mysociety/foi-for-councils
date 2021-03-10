@@ -9,7 +9,7 @@ class DisclosureLog
   def initialize(start_date: nil, end_date: nil, case_management: nil)
     @start_date = start_date || Time.zone.today.beginning_of_year
     @end_date = end_date || Time.zone.today
-    @case_management = case_management || CaseManagement::Infreemation.new
+    @case_management = case_management || Current.case_management
   end
 
   def import!

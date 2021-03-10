@@ -11,6 +11,17 @@ RSpec.describe DeliverSubmission, type: :service do
   let(:submitted_request) { double(reference: '001') }
   let(:case_management) { double(submit_foi_request!: submitted_request) }
 
+  describe 'initialization' do
+    it 'defaults case_management to the current case_management' do
+      case_management = double
+
+      Current.set(case_management: case_management) do
+        expect(described_class.new(double).send(:case_management)).
+          to eq(case_management)
+      end
+    end
+  end
+
   subject(:service) do
     described_class.new(submission, case_management: case_management)
   end

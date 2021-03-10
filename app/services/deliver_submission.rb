@@ -9,7 +9,7 @@ class DeliverSubmission < SimpleDelegator
 
   def initialize(obj, case_management: nil)
     super(obj)
-    @case_management = case_management || CaseManagement::Infreemation.new
+    @case_management = case_management || Current.case_management
   end
 
   def call

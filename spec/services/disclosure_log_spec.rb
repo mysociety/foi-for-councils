@@ -23,6 +23,13 @@ RSpec.describe DisclosureLog, type: :service do
     it 'defaults end_date to today' do
       expect(subject.end_date).to eq Date.new(2018, 6, 18)
     end
+
+    it 'defaults case_management to the current case_management' do
+      case_management = double
+      Current.set(case_management: case_management) do
+        expect(subject.send(:case_management)).to eq(case_management)
+      end
+    end
   end
 
   describe '#import!' do
