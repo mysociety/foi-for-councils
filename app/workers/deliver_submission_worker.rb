@@ -7,9 +7,11 @@ class DeliverSubmissionWorker
   include Sidekiq::Worker
 
   def perform(id)
-    submission = Submission.deliverable.find_by(id: id)
-    return unless submission
+    Current.set(case_management: CaseManagement::Infreemation.new) do
+      submission = Submission.deliverable.find_by(id: id)
+      return unless submission
 
-    submission.with_lock { submission.deliver }
+      submission.with_lock { submission.deliver }
+    end
   end
 end

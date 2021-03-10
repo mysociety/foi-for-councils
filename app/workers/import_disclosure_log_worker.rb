@@ -7,8 +7,10 @@ class ImportDisclosureLogWorker
   include Sidekiq::Worker
 
   def perform(duration = nil)
-    @duration = duration
-    DisclosureLog.new(arguments).import!
+    Current.set(case_management: CaseManagement::Infreemation.new) do
+      @duration = duration
+      DisclosureLog.new(arguments).import!
+    end
   end
 
   private
