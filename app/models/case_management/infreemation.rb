@@ -33,6 +33,10 @@ module CaseManagement
         map { |request| PublishedRequest.new(request) }
     end
 
+    def ==(other)
+      client == other.client
+    end
+
     protected
 
     attr_reader :client

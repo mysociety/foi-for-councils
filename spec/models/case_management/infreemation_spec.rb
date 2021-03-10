@@ -65,4 +65,20 @@ RSpec.describe CaseManagement::Infreemation, type: :model do
       expect(subject).to match_array(expected)
     end
   end
+
+  describe '#==' do
+    subject { described_class.new(client: client) == other }
+
+    context 'when they encapsulate the same client' do
+      let(:client) { double }
+      let(:other) { described_class.new(client: client) }
+      it { is_expected.to eq(true) }
+    end
+
+    context 'when the encapsulated client is different' do
+      let(:client) { double }
+      let(:other) { described_class.new(client: double) }
+      it { is_expected.to eq(false) }
+    end
+  end
 end
