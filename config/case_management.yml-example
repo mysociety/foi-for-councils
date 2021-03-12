@@ -1,0 +1,6 @@
+development:
+  adapter: 'Infreemation'
+  client_params:
+    endpoint: 'https://api.infreemation.co.uk/sandbox'
+    api_key: 'secret'
+    username: 'username'

@@ -60,6 +60,9 @@ jobs:
         bundle exec rails db:create
         bundle exec rails db:schema:load
 
+    - name: Setup configuration
+      run: cp config/case_management.yml-example config/case_management.yml
+
     - name: Run tests
       run: |
         bundle exec rspec
