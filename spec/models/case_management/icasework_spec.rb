@@ -37,4 +37,33 @@ RSpec.describe CaseManagement::Icasework, type: :model do
       expect(subject.reference).to eq('FOI-001')
     end
   end
+
+  describe '#published_requests' do
+    subject { case_management.published_requests(query_params) }
+
+    let(:case_management) { described_class.new(client: client) }
+    let(:client) { double(where: published_requests) }
+    let(:published_requests) { [double, double] }
+
+    let(:query_params) { { start_date: start_date, end_date: end_date } }
+    let(:start_date) { Time.zone.today.beginning_of_year }
+    let(:end_date) { Time.zone.today }
+
+    it 'queries the API with the required parameters' do
+      parameters = { 'Type' => 'InformationRequest',
+                     'From' => start_date,
+                     'Until' => end_date }
+
+      expect(client).to receive(:where).with(parameters)
+      subject
+    end
+
+    it 'returns a collection of results as PublishedRequests' do
+      expected = published_requests.map do |request|
+        described_class::PublishedRequest.new(request)
+      end
+
+      expect(subject).to match_array(expected)
+    end
+  end
 end
