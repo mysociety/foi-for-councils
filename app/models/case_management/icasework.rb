@@ -3,6 +3,14 @@
 module CaseManagement
   # Implementation of a CaseManagement for the iCasework Case Management System.
   class Icasework
+    def self.configure!(params)
+      ::Icasework.env = Rails.env
+
+      params.each do |key, value|
+        ::Icasework.public_send("#{key}=", value)
+      end
+    end
+
     def initialize(client: nil)
       @client = client || ::Icasework::Case
     end

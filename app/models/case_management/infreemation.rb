@@ -4,6 +4,14 @@ module CaseManagement
   # Implementation of a CaseManagement for the Infreemation Case Management
   # System.
   class Infreemation
+    def self.configure!(params)
+      ::Infreemation.logger = Rails.logger
+
+      params.each do |key, value|
+        ::Infreemation.public_send("#{key}=", value)
+      end
+    end
+
     def initialize(client: nil)
       @client = client || ::Infreemation::Request
     end

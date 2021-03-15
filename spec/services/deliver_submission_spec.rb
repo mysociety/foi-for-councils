@@ -15,6 +15,32 @@ RSpec.describe DeliverSubmission, type: :service do
     described_class.new(submission, case_management: case_management)
   end
 
+  describe 'initialization' do
+    context 'when case_management is empty' do
+      subject(:provided) { described_class.new(double) }
+      let(:case_management) { double }
+
+      before { CaseManagement.current = case_management }
+      after { CaseManagement.current = nil }
+
+      it 'sets case_management to the current case management' do
+        expect(provided.send(:case_management)).to eq(case_management)
+      end
+    end
+
+    context 'when case_management is provided' do
+      subject(:provided) do
+        described_class.new(double, case_management: case_management)
+      end
+
+      let(:case_management) { double }
+
+      it 'sets case_management to the given value' do
+        expect(provided.send(:case_management)).to eq(case_management)
+      end
+    end
+  end
+
   describe '#call' do
     context 'successful response' do
       before do

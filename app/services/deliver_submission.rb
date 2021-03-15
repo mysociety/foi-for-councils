@@ -7,9 +7,9 @@
 class DeliverSubmission < SimpleDelegator
   delegate :contact, to: :foi_request
 
-  def initialize(obj, case_management: nil)
+  def initialize(obj, case_management: CaseManagement.current)
     super(obj)
-    @case_management = case_management || CaseManagement::Infreemation.new
+    @case_management = case_management
   end
 
   def call

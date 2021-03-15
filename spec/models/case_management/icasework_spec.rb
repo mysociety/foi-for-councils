@@ -3,6 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe CaseManagement::Icasework, type: :model do
+  describe '.configure!' do
+    subject { described_class.configure!(params) }
+
+    let(:params) { { account: 'foo', api_key: 'key', secret_key: 'secret' } }
+
+    before do
+      expect(Icasework).to receive(:env=).with(Rails.env)
+      expect(Icasework).to receive(:account=).with('foo')
+      expect(Icasework).to receive(:api_key=).with('key')
+      expect(Icasework).to receive(:secret_key=).with('secret')
+    end
+
+    it { is_expected.to eq(params) }
+  end
+
   describe '#submit_foi_request!' do
     subject do
       case_management.submit_foi_request!(name: request_attrs[:name],

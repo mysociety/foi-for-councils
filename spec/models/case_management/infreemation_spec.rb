@@ -3,6 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe CaseManagement::Infreemation, type: :model do
+  describe '.configure!' do
+    subject { described_class.configure!(params) }
+
+    let(:params) { { url: 'example.com', username: 'foo', api_key: 'secret' } }
+
+    before do
+      expect(Infreemation).to receive(:logger=).with(Rails.logger)
+      expect(Infreemation).to receive(:url=).with('example.com')
+      expect(Infreemation).to receive(:username=).with('foo')
+      expect(Infreemation).to receive(:api_key=).with('secret')
+    end
+
+    it { is_expected.to eq(params) }
+  end
+
   describe '#submit_foi_request!' do
     subject do
       case_management.submit_foi_request!(name: request_attrs[:name],
