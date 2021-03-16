@@ -17,6 +17,24 @@ RSpec.describe PublishedRequest, type: :model do
     end
   end
 
+  describe '.source' do
+    subject { described_class.source(case_management) }
+
+    let!(:fake) do
+      FactoryBot.create(:published_request,
+                        case_management: 'CaseManagement::Fake')
+    end
+
+    let!(:other) do
+      FactoryBot.create(:published_request,
+                        case_management: 'CaseManagement::Other')
+    end
+
+    let(:case_management) { double(name: 'CaseManagement::Fake') }
+
+    it { is_expected.to match_array([fake]) }
+  end
+
   describe '.create_update_or_destroy_from_api!' do
     subject { described_class.create_update_or_destroy_from_api!(request) }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_085317) do
+ActiveRecord::Schema.define(version: 2021_03_16_124123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_08_03_085317) do
     t.string "reference"
     t.datetime "published_at"
     t.datetime "api_created_at"
+    t.string "case_management"
   end
 
   create_table "submissions", force: :cascade do |t|

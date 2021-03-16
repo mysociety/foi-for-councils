@@ -24,6 +24,8 @@ FactoryBot.define do
       { ref: 'FOI-001' }
     end
 
+    case_management { 'CaseManagement::Fake' }
+
     factory :published_request_with_suggestions do
       after(:create) do |published_request, _evaluator|
         create_list(:foi_suggestion, 3, resource: published_request)
