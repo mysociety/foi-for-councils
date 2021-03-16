@@ -15,6 +15,10 @@ module CaseManagement
       @client = client || ::Icasework::Case
     end
 
+    def name
+      self.class.name
+    end
+
     def submit_foi_request!(name:, email:, body:)
       request = client.create(
         'Type' => 'InformationRequest',

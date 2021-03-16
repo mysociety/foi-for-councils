@@ -16,6 +16,10 @@ module CaseManagement
       @client = client || ::Infreemation::Request
     end
 
+    def name
+      self.class.name
+    end
+
     def submit_foi_request!(name:, email:, body:)
       request = client.create!(
         rt: 'create',

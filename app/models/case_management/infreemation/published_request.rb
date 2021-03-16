@@ -60,6 +60,7 @@ module CaseManagement
           published_at: published_at,
           api_created_at: api_created_at,
           publishable: publishable?,
+          case_management: self.class.module_parent.name,
           payload: payload }
       end
 

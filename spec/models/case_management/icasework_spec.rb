@@ -18,6 +18,11 @@ RSpec.describe CaseManagement::Icasework, type: :model do
     it { is_expected.to eq(params) }
   end
 
+  describe '#name' do
+    subject { described_class.new.name }
+    it { is_expected.to eq('CaseManagement::Icasework') }
+  end
+
   describe '#submit_foi_request!' do
     subject do
       case_management.submit_foi_request!(name: request_attrs[:name],
