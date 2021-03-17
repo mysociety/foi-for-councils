@@ -12,7 +12,7 @@ RSpec.describe CaseManagement::Infreemation::PublishedRequest, type: :model do
   let(:attributes) do
     {
       ref: 'FOI-001',
-      title: 'An FOI Request',
+      subject: 'An FOI Request',
       url: 'https://foi.example.com/FOI-001',
       requestbody: 'Initial FOI Request',
       history: {
