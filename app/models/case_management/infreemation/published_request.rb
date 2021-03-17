@@ -14,7 +14,7 @@ module CaseManagement
       end
 
       def title
-        attributes[:title]
+        attributes[:subject]
       end
 
       def url
