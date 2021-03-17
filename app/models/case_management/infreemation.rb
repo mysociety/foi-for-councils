@@ -38,7 +38,7 @@ module CaseManagement
 
       client.
         where(client_params).
-        map { |request| PublishedRequest.new(request) }
+        map { |request| self.class::PublishedRequest.new(request) }
     end
 
     protected
