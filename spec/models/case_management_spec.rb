@@ -6,6 +6,20 @@ RSpec.describe CaseManagement, type: :model do
   before { described_class.current = nil }
   after { described_class.current = nil }
 
+  describe '.constantize' do
+    subject { described_class.constantize(name) }
+
+    context 'when the name is correctly namespaced' do
+      let(:name) { 'CaseManagement::Infreemation' }
+      it { is_expected.to eq(CaseManagement::Infreemation) }
+    end
+
+    context 'when only the class name is given' do
+      let(:name) { 'Infreemation' }
+      it { is_expected.to eq(CaseManagement::Infreemation) }
+    end
+  end
+
   describe '.current' do
     subject { described_class.current }
 
