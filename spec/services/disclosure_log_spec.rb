@@ -45,7 +45,11 @@ RSpec.describe DisclosureLog, type: :service do
        double(reference: 'FOI-4',
               to_h: { reference: 'FOI-4',
                       case_management: 'CaseManagement::Fake',
-                      publishable: false })]
+                      publishable: false }),
+       double(reference: 'FOI-999',
+              to_h: { reference: 'FOI-999',
+                      case_management: 'CaseManagement::Fake',
+                      publishable: true })]
     end
 
     # This request is outside the default start_date of 1 year ago
@@ -128,6 +132,11 @@ RSpec.describe DisclosureLog, type: :service do
       subject
       expect { published_request4.reload }.
         to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'creates a cache of newly published requests' do
+      subject
+      expect { PublishedRequest.exists?(reference: 'FOI-999').to eq(true) }
     end
   end
 
