@@ -18,6 +18,11 @@ module CaseManagement
     @current = case_management
   end
 
+  def self.generate_url(published_request)
+    constantize(published_request.case_management).new.
+      generate_url(published_request)
+  end
+
   def self.config
     @config ||= Rails.application.config_for(:case_management)
     constantize(@config[:adapter]).configure!(@config[:client_params])

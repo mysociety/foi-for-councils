@@ -85,4 +85,11 @@ RSpec.describe CaseManagement::Infreemation, type: :model do
       expect(subject).to match_array(expected)
     end
   end
+
+  describe '#generate_url' do
+    subject { case_management.generate_url(published_request) }
+    let(:case_management) { described_class.new }
+    let(:published_request) { double(url: 'https://example.com') }
+    it { is_expected.to eq('https://example.com') }
+  end
 end

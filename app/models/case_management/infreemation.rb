@@ -45,6 +45,10 @@ module CaseManagement
         map { |request| self.class::PublishedRequest.new(request) }
     end
 
+    def generate_url(published_request)
+      published_request.url
+    end
+
     protected
 
     attr_reader :client

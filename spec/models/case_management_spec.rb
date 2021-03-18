@@ -56,6 +56,26 @@ RSpec.describe CaseManagement, type: :model do
     end
   end
 
+  describe '.generate_url' do
+    subject { described_class.generate_url(published_request) }
+
+    let(:published_request) do
+      double(case_management: 'CaseManagement::Infreemation')
+    end
+
+    let(:fake_case_management) { double(generate_url: 'https://example.org') }
+
+    before do
+      expect(CaseManagement::Infreemation).
+        to receive(:new).and_return(fake_case_management)
+
+      expect(fake_case_management).
+        to receive(:generate_url).with(published_request)
+    end
+
+    it { is_expected.to eq('https://example.org') }
+  end
+
   describe '.config' do
     subject { described_class.config }
 
