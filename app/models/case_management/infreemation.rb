@@ -16,6 +16,10 @@ module CaseManagement
       @client = client || ::Infreemation::Request
     end
 
+    def name
+      self.class.name
+    end
+
     def submit_foi_request!(name:, email:, body:)
       request = client.create!(
         rt: 'create',
@@ -38,7 +42,7 @@ module CaseManagement
 
       client.
         where(client_params).
-        map { |request| PublishedRequest.new(request) }
+        map { |request| self.class::PublishedRequest.new(request) }
     end
 
     protected

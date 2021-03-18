@@ -18,7 +18,11 @@ class DisclosureLog
                    pluck(:reference)
     imported_refs = import.pluck(:reference)
     expired_refs = current_refs - imported_refs
-    PublishedRequest.where(reference: expired_refs).destroy_all
+
+    PublishedRequest.
+      source(case_management).
+      where(reference: expired_refs).
+      destroy_all
   end
 
   def import

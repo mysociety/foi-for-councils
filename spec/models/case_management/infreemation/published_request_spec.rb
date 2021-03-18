@@ -122,6 +122,7 @@ RSpec.describe CaseManagement::Infreemation::PublishedRequest, type: :model do
         published_at: Date.parse('2018-01-05'),
         api_created_at: Date.parse('2018-01-01'),
         publishable: true,
+        case_management: 'CaseManagement::Infreemation',
         payload: attributes
       )
     end

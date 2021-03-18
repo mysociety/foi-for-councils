@@ -32,14 +32,19 @@ RSpec.describe DisclosureLog, type: :service do
       travel_to(Time.utc(2018, 6, 18, 11, 30))
     end
 
-    let(:case_management) { double(published_requests: published_requests) }
+    let(:case_management) do
+      double(published_requests: published_requests,
+             name: 'CaseManagement::Fake')
+    end
 
     let(:published_requests) do
       [double(reference: 'FOI-2',
               to_h: { reference: 'FOI-2',
+                      case_management: 'CaseManagement::Fake',
                       publishable: true }),
        double(reference: 'FOI-4',
               to_h: { reference: 'FOI-4',
+                      case_management: 'CaseManagement::Fake',
                       publishable: false })]
     end
 
@@ -49,6 +54,7 @@ RSpec.describe DisclosureLog, type: :service do
     let!(:published_request1) do
       create(:published_request,
              reference: 'FOI-1',
+             case_management: 'CaseManagement::Fake',
              published_at: Time.zone.parse('2010-01-01'),
              api_created_at: Time.zone.parse('2010-01-01'))
     end
@@ -59,6 +65,7 @@ RSpec.describe DisclosureLog, type: :service do
     let!(:published_request2) do
       create(:published_request,
              reference: 'FOI-2',
+             case_management: 'CaseManagement::Fake',
              published_at: Time.zone.parse('2018-06-17'),
              api_created_at: Time.zone.parse('2018-06-17'))
     end
@@ -69,6 +76,7 @@ RSpec.describe DisclosureLog, type: :service do
     let!(:published_request3) do
       create(:published_request,
              reference: 'FOI-3',
+             case_management: 'CaseManagement::Fake',
              published_at: Time.zone.parse('2018-06-17'),
              api_created_at: Time.zone.parse('2018-06-17'))
     end
@@ -79,6 +87,18 @@ RSpec.describe DisclosureLog, type: :service do
     let!(:published_request4) do
       create(:published_request,
              reference: 'FOI-4',
+             case_management: 'CaseManagement::Fake',
+             published_at: Time.zone.parse('2018-06-17'),
+             api_created_at: Time.zone.parse('2018-06-17'))
+    end
+
+    # This request is inside the window of results that we may expect
+    # It is from a different case management
+    # It will stay persisted
+    let!(:published_request5) do
+      create(:published_request,
+             reference: 'FOI-5',
+             case_management: 'CaseManagement::DifferentSystem',
              published_at: Time.zone.parse('2018-06-17'),
              api_created_at: Time.zone.parse('2018-06-17'))
     end
@@ -91,6 +111,11 @@ RSpec.describe DisclosureLog, type: :service do
     it 'keeps publishable requests inside the import window that are returned by the feed' do
       subject
       expect(published_request2.reload).to be_persisted
+    end
+
+    it 'keeps requests from other case management systems' do
+      subject
+      expect(published_request5.reload).to be_persisted
     end
 
     it 'destroys requests inside the import window that are not returned by the feed' do
