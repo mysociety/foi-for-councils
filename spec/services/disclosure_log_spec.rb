@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe DisclosureLog, type: :service do
   describe 'initialisation' do
     before { travel_to Time.utc(2018, 6, 18, 11, 30) }
+    before { CaseManagement.current = double }
+    after { CaseManagement.current = nil }
 
     it 'accepts a start_date' do
       subject = described_class.new(start_date: Date.new(2018, 2, 1))
@@ -22,6 +24,30 @@ RSpec.describe DisclosureLog, type: :service do
 
     it 'defaults end_date to today' do
       expect(subject.end_date).to eq Date.new(2018, 6, 18)
+    end
+
+    context 'when case_management is empty' do
+      subject(:provided) { described_class.new(case_management: nil) }
+      let(:case_management) { double }
+
+      before { CaseManagement.current = case_management }
+      after { CaseManagement.current = nil }
+
+      it 'sets case_management to the current case management' do
+        expect(provided.send(:case_management)).to eq(case_management)
+      end
+    end
+
+    context 'when case_management is provided' do
+      subject(:provided) do
+        described_class.new(case_management: case_management)
+      end
+
+      let(:case_management) { double }
+
+      it 'sets case_management to the given value' do
+        expect(provided.send(:case_management)).to eq(case_management)
+      end
     end
   end
 
