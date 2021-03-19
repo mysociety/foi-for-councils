@@ -53,7 +53,20 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+
+    - name: Cache RubyGems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-${{ matrix.ruby }}-gems-unit-${{ hashFiles(format('{0}.lock', matrix.gemfile || 'Gemfile')) }}
+        restore-keys: |
+          ${{ runner.os }}-${{ matrix.ruby }}-gems-unit-
+
+    - name: Install RubyGems
+      run: |
+        bundle config path vendor/bundle
+        bundle config build.libv8 --with-system-v8
+        bundle install --jobs $(nproc) --retry 3
 
     - name: Setup database
       run: |
