@@ -20,13 +20,10 @@ module CaseManagement
     end
 
     def submit_foi_request!(name:, email:, body:)
-      request = client.create(
-        'Type' => 'InformationRequest',
-        'RequestMethod' => 'Online Form',
-        'Customer.Name' => name,
-        'Customer.Email' => email,
-        'Details' => body
-      )
+      request = client.create(type: 'InformationRequest',
+                              request_method: 'Online Form',
+                              customer: { name: name, email: email },
+                              details: body)
 
       SubmittedRequest.new(request)
     end

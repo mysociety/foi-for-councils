@@ -42,11 +42,13 @@ RSpec.describe CaseManagement::Icasework, type: :model do
     end
 
     it 'submits the request with the required parameters' do
-      parameters = { 'Type' => 'InformationRequest',
-                     'RequestMethod' => 'Online Form',
-                     'Customer.Name' => request_attrs[:name],
-                     'Customer.Email' => request_attrs[:email],
-                     'Details' => request_attrs[:body] }
+      parameters = { type: 'InformationRequest',
+                     request_method: 'Online Form',
+                     customer: {
+                       name: request_attrs[:name],
+                       email: request_attrs[:email]
+                     },
+                     details: request_attrs[:body] }
 
       expect(client).to receive(:create).with(parameters)
       subject
