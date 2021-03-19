@@ -67,6 +67,28 @@ RSpec.describe PublishedRequest, type: :model do
     end
   end
 
+  describe '#url' do
+    subject { published_request.url }
+    let(:published_request) { build(:published_request, url: url) }
+
+    context 'when the url is set' do
+      let(:url) { 'https://example.com' }
+      it { is_expected.to eq('https://example.com') }
+    end
+
+    context 'when the url is nil' do
+      let(:url) { nil }
+
+      before do
+        expect(CaseManagement).
+          to receive(:generate_url).with(published_request).
+          and_return('https://example.com')
+      end
+
+      it { is_expected.to eq('https://example.com') }
+    end
+  end
+
   describe '#save_or_destroy!' do
     let(:published_request) { build(:published_request) }
 

@@ -6,6 +6,20 @@ RSpec.describe CaseManagement, type: :model do
   before { described_class.current = nil }
   after { described_class.current = nil }
 
+  describe '.constantize' do
+    subject { described_class.constantize(name) }
+
+    context 'when the name is correctly namespaced' do
+      let(:name) { 'CaseManagement::Infreemation' }
+      it { is_expected.to eq(CaseManagement::Infreemation) }
+    end
+
+    context 'when only the class name is given' do
+      let(:name) { 'Infreemation' }
+      it { is_expected.to eq(CaseManagement::Infreemation) }
+    end
+  end
+
   describe '.current' do
     subject { described_class.current }
 
@@ -40,6 +54,26 @@ RSpec.describe CaseManagement, type: :model do
       subject
       expect(described_class.current).to eq(case_management)
     end
+  end
+
+  describe '.generate_url' do
+    subject { described_class.generate_url(published_request) }
+
+    let(:published_request) do
+      double(case_management: 'CaseManagement::Infreemation')
+    end
+
+    let(:fake_case_management) { double(generate_url: 'https://example.org') }
+
+    before do
+      expect(CaseManagement::Infreemation).
+        to receive(:new).and_return(fake_case_management)
+
+      expect(fake_case_management).
+        to receive(:generate_url).with(published_request)
+    end
+
+    it { is_expected.to eq('https://example.org') }
   end
 
   describe '.config' do

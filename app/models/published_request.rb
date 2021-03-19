@@ -39,6 +39,10 @@ class PublishedRequest < ApplicationRecord
     record
   end
 
+  def url
+    self[:url] || CaseManagement.generate_url(self)
+  end
+
   def save_or_destroy!
     if publishable?
       save!
