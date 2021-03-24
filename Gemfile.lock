@@ -363,7 +363,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.1)
   govuk_elements_form_builder
   hackney_template!
-  icasework (= 0.1.0)
+  icasework
   infreemation
   jbuilder (~> 2.11)
   listen (>= 3.0.5, < 3.5)

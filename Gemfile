@@ -38,7 +38,7 @@ gem 'govuk_elements_form_builder'
 gem 'hackney_template', path: 'gems/hackney_template-0.0.2'
 
 # Case management
-gem 'icasework', '0.1.0'
+gem 'icasework'
 gem 'infreemation'
 
 # Background workers
