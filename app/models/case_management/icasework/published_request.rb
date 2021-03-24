@@ -81,12 +81,18 @@ module CaseManagement
           request[:case_details_information_request] \
           [:publish_in_the_disclosure_log_date]
         )
+      # TODO: Client library LazyHash should handle this
+      rescue KeyError
+        nil
       end
 
       def case_stage_stage_1_date_completed
         try_parse_date(
           request[:case_stage_stage].pluck(:date_completed).compact.min
         )
+      # TODO: Client library LazyHash should handle this
+      rescue KeyError
+        nil
       end
 
       def case_details
