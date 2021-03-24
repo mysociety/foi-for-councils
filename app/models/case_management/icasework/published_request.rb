@@ -25,9 +25,8 @@ module CaseManagement
         nil
       end
 
-      # TODO: Extract contents of documents
       def summary
-        case_attributes[:details]
+        [case_attributes[:details], *pdf_contents].join(' ')
       end
 
       def keywords
@@ -107,8 +106,12 @@ module CaseManagement
         request[:attributes]
       end
 
+      def pdf_contents
+        documents.map(&:pdf_contents).compact
+      end
+
       def documents
-        request[:documents]
+        request.documents
       end
 
       def try_parse_date(date)

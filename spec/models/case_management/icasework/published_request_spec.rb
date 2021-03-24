@@ -43,7 +43,8 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
         { group: 'G3', __content__: 'Missed bins' }
       ],
       documents: [
-        { name: 'Response (all information to be supplied)',
+        { id: 'D1234',
+          name: 'Response (all information to be supplied)',
           type: 'applicaion/pdf',
           __content__: 'https://example.com/?ref=D225851&access_token=FOO' }
       ]
@@ -67,8 +68,16 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
 
   describe '#summary' do
     subject { request.summary }
+
+    before do
+      expect(request).
+        to receive(:documents).
+        and_return([double(pdf_contents: 'PDF')])
+    end
+
     it { is_expected.to eq(<<-TEXT.strip_heredoc.chomp.squish) }
     Please provide the amount spent on printers in 2020.
+    PDF
     TEXT
   end
 
@@ -148,8 +157,14 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
 
     let(:summary) do
       <<-TEXT.strip_heredoc.chomp.squish
-      Please provide the amount spent on printers in 2020.
+      Please provide the amount spent on printers in 2020. PDF
       TEXT
+    end
+
+    before do
+      expect(request).
+        to receive(:documents).
+        and_return([double(pdf_contents: 'PDF')])
     end
 
     it do
