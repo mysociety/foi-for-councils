@@ -54,7 +54,9 @@ module CaseManagement
       case_id = published_request.reference
       document_id = responses.first[:id]
 
-      ::Icasework::Document.find(case_id: case_id, document_id: document_id).url
+      ::Icasework::Document.find(
+        case_id: case_id, document_id: document_id, self_service: 'True'
+      ).url
     end
 
     protected

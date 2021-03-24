@@ -142,8 +142,9 @@ RSpec.describe CaseManagement::Icasework, type: :model do
 
     before do
       expect(Icasework::Document).
-        to receive(:find).with(case_id: '1234', document_id: 'D225851').
-        and_return(double(url: 'https://example.com/doc/D225851'))
+        to receive(:find).with(
+          case_id: '1234', document_id: 'D225851', self_service: 'True'
+        ).and_return(double(url: 'https://example.com/doc/D225851'))
     end
 
     it { is_expected.to eq('https://example.com/doc/D225851') }
