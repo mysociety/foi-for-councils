@@ -34,9 +34,10 @@ module CaseManagement
         request.classifications.flat_map { |c| [c.group, c.title] }.join(', ')
       end
 
-      # TODO: Check whether there's a better attribute available
       def published_at
-        api_created_at
+        publish_in_the_disclosure_log_date ||
+          case_stage_stage_1_date_completed ||
+          api_created_at
       end
 
       def publishable?
@@ -73,6 +74,21 @@ module CaseManagement
 
       attr_reader :request
 
+      private
+
+      def publish_in_the_disclosure_log_date
+        try_parse_date(
+          request[:case_details_information_request] \
+          [:publish_in_the_disclosure_log_date]
+        )
+      end
+
+      def case_stage_stage_1_date_completed
+        try_parse_date(
+          request[:case_stage_stage].pluck(:date_completed).compact.min
+        )
+      end
+
       def case_details
         request[:case_details]
       end
@@ -87,6 +103,10 @@ module CaseManagement
 
       def documents
         request[:documents]
+      end
+
+      def try_parse_date(date)
+        Date.parse(date) if date
       end
     end
   end

@@ -30,6 +30,13 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
         reason_information_not_held: 't',
         suitable_for_publication_scheme: 'Yes'
       },
+      case_details_information_request: {
+        publish_in_the_disclosure_log_date: '2021-03-20'
+      },
+      case_stage_stage: [
+        { date_completed: '2021-03-18' },
+        { date_completed: '2021-03-19' }
+      ],
       classifications: [
         { group: 'G1', __content__: 'Bins' },
         { group: 'G2', __content__: 'Waste' },
@@ -72,7 +79,34 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
 
   describe '#published_at' do
     subject { request.published_at }
-    it { is_expected.to eq(Date.parse('2021-02-15')) }
+
+    context 'when there is a publish_in_the_disclosure_log_date' do
+      it { is_expected.to eq(Date.parse('2021-03-20')) }
+    end
+
+    context 'when there is no publish_in_the_disclosure_log_date' do
+      before do
+        attributes[:case_details_information_request][
+          :publish_in_the_disclosure_log_date] = nil
+      end
+
+      it 'falls back to CaseStageStage1.DateCompleted' do
+        is_expected.to eq(Date.parse('2021-03-18'))
+      end
+    end
+
+    context 'when there is no CaseStageStage1.DateCompleted' do
+      before do
+        attributes[:case_details_information_request][
+          :publish_in_the_disclosure_log_date] = nil
+
+        attributes[:case_stage_stage] = []
+      end
+
+      it 'falls back to the api_created_at' do
+        is_expected.to eq(Date.parse('2021-02-15'))
+      end
+    end
   end
 
   describe '#publishable?' do
@@ -125,7 +159,7 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
         url: nil,
         summary: summary,
         keywords: 'G1, Bins, G2, Waste, G3, Missed bins',
-        published_at: Date.parse('2021-02-15'),
+        published_at: Date.parse('2021-03-20'),
         api_created_at: Date.parse('2021-02-15'),
         publishable: true,
         case_management: 'CaseManagement::Icasework',
