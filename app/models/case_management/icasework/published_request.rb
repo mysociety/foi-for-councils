@@ -74,6 +74,8 @@ module CaseManagement
 
       attr_reader :request
 
+      private
+
       def publish_in_the_disclosure_log_date
         try_parse_date(
           request[:case_details_information_request] \
