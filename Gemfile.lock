@@ -90,7 +90,6 @@ GEM
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
       activesupport (>= 4.0, < 7)
-    execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -138,7 +137,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.5.1)
     jwt (2.2.2)
-    libv8 (8.4.255.0)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -154,8 +152,6 @@ GEM
     mime-types-data (3.2021.0225)
     mini_mime (1.0.3)
     mini_portile2 (2.5.0)
-    mini_racer (0.3.1)
-      libv8 (~> 8.4.255)
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
@@ -203,6 +199,8 @@ GEM
     racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
+      rack
+    rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -292,15 +290,10 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.1.0)
-      railties (>= 5.2.0)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     scenic (1.5.4)
       activerecord (>= 4.0.0)
       railties (>= 4.0.0)
+    semantic_range (3.0.0)
     sidekiq (5.2.9)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (~> 2.0)
@@ -329,13 +322,8 @@ GEM
       e2mmap
     tilt (2.0.10)
     ttfunk (1.7.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
@@ -345,6 +333,11 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webpacker (6.0.0.beta.5)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -365,7 +358,6 @@ DEPENDENCIES
   infreemation
   jbuilder (~> 2.11)
   listen (>= 3.0.5, < 3.5)
-  mini_racer
   omniauth (~> 2.0.1)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
@@ -378,13 +370,11 @@ DEPENDENCIES
   rubocop (~> 1.11.0)
   rubocop-performance
   rubocop-rails
-  sass-rails (~> 5.1.0)
   scenic
   sidekiq (~> 5.2)
   sidekiq-scheduler
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   tzinfo-data
-  uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webpacker (= 6.0.0.beta.5)

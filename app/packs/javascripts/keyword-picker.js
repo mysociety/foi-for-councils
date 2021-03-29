@@ -1,4 +1,5 @@
-/* global $, Taggle */
+import $ from 'jquery'
+import Taggle from 'taggle'
 
 var removeEmptyItems = function (array) {
   var cleaned = []
