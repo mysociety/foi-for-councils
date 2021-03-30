@@ -11,3 +11,7 @@ updates:
       - dependency-name: sidekiq
         versions:
         - ">= 6.0.0"
+      # incompatible with hackney_template
+      - dependency-name: sass-rails
+        versions:
+        - ">= 6.0.0"
