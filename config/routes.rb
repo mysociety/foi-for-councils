@@ -8,11 +8,15 @@ Rails.application.routes.draw do
 
   namespace :foi do
     root to: 'requests#index'
+
     resource :request, except: %i[show destroy] do
       root to: redirect('foi/request/new')
+
       resources :suggestions, only: %i[index]
+
       get 'contact', to: redirect('foi/request/contact/new')
       resource :contact, except: %i[show destroy]
+
       get 'preview', to: 'submissions#new', as: 'preview'
       post 'send', to: 'submissions#create', as: 'send'
       get 'sent', to: 'submissions#show', as: 'sent'
@@ -23,16 +27,19 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root action: 'show'
+
     resources :curated_links, except: [:show] do
       collection do
         resource :export, only: [:show], format: 'csv'
       end
     end
+
     resource :performance, only: %i[show new create]
   end
 
   namespace :health do
     root to: redirect('/health/metrics')
+
     resources :metrics, only: [:index], format: 'txt'
   end
 
