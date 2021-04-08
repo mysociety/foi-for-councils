@@ -1,0 +1,14 @@
+<% content_for :page_title, 'Help' %>
+
+<div class="grid-row">
+  <div class="column-full">
+    <h1 class="heading-xlarge">
+      Help
+    </h1>
+
+    <div id="content">
+      <%= render partial: "admin/help/#{@case_management.to_partial_path}" %>
+    </div>
+  </div>
+</div>
+

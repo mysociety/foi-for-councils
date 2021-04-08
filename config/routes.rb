@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
 
     resource :performance, only: %i[show new create]
+
+    get 'help', to: 'help#index', as: :help
   end
 
   namespace :health do
