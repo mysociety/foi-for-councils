@@ -149,4 +149,9 @@ RSpec.describe CaseManagement::Icasework, type: :model do
 
     it { is_expected.to eq('https://example.com/doc/D225851') }
   end
+
+  describe '#to_partial_path' do
+    subject { described_class.new.to_partial_path }
+    it { is_expected.to eq('case_management/icasework') }
+  end
 end

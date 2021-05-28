@@ -49,6 +49,10 @@ module CaseManagement
       published_request.url
     end
 
+    def to_partial_path
+      name.underscore
+    end
+
     protected
 
     attr_reader :client

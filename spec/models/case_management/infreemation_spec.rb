@@ -92,4 +92,9 @@ RSpec.describe CaseManagement::Infreemation, type: :model do
     let(:published_request) { double(url: 'https://example.com') }
     it { is_expected.to eq('https://example.com') }
   end
+
+  describe '#to_partial_path' do
+    subject { described_class.new.to_partial_path }
+    it { is_expected.to eq('case_management/infreemation') }
+  end
 end
