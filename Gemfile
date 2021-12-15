@@ -74,7 +74,7 @@ group :development do
   # anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.6'
   # Use Puma as the app server
-  gem 'puma', '~> 5.4'
+  gem 'puma', '~> 5.5'
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem 'spring'
