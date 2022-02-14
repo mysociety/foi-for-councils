@@ -128,7 +128,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.15.0)
+    ffi (1.15.5)
     fugit (1.4.1)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
@@ -166,7 +166,7 @@ GEM
     json (2.5.1)
     jwt (2.2.2)
     libv8 (8.4.255.0)
-    listen (3.5.0)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
@@ -240,7 +240,7 @@ GEM
       loofah (~> 2.3)
     rainbow (3.1.1)
     rake (13.0.3)
-    rb-fsevent (0.10.4)
+    rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.1.4)
@@ -370,7 +370,7 @@ DEPENDENCIES
   icasework
   infreemation
   jbuilder (~> 2.11)
-  listen (>= 3.0.5, < 3.6)
+  listen (>= 3.0.5, < 3.8)
   mini_racer
   omniauth (~> 2.0.1)
   omniauth-google-oauth2
