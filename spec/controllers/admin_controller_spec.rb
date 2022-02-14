@@ -14,7 +14,7 @@ RSpec.describe AdminController, type: :controller do
       expect(User).to receive(:find_by).with(uid: 123).and_return(build(:user))
       get :index, session: {
         current_user: 123,
-        authenticated_until: (Time.zone.now + 1.minute).to_i
+        authenticated_until: 1.minute.from_now.to_i
       }
       expect(response.body).to eq 'success'
     end
@@ -25,7 +25,7 @@ RSpec.describe AdminController, type: :controller do
       expect(User).to receive(:find_by).with(uid: 789).and_return(nil)
       get :index, session: {
         current_user: 789,
-        authenticated_until: (Time.zone.now + 1.minute).to_i
+        authenticated_until: 1.minute.from_now.to_i
       }
       expect(response).to redirect_to('/auth/sign_in')
     end
@@ -36,7 +36,7 @@ RSpec.describe AdminController, type: :controller do
       expect(User).to receive(:find_by).with(uid: 123).and_return(build(:user))
       get :index, session: {
         current_user: 123,
-        authenticated_until: (Time.zone.now - 1.minute).to_i
+        authenticated_until: 1.minute.ago.to_i
       }
       expect(response).to redirect_to('/auth/sign_in')
     end
