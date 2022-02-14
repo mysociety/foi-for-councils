@@ -8,7 +8,7 @@ RSpec.describe Admin::CuratedLinksController, type: :controller do
   let(:invalid_params) { { invalid: true } }
 
   let(:session) do
-    { current_user: 123, authenticated_until: (Time.zone.now + 1.hour).to_i }
+    { current_user: 123, authenticated_until: 1.hour.from_now.to_i }
   end
 
   before do
