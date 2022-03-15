@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
+      - DATABASE_URL=postgres://postgres:password@db/
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/code
+      - bundle:/bundle
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./docker/createdb.sh:/docker-entrypoint-initdb.d/createdb.sh
+
+  redis:
+    image: redis:latest
+    command: redis-server
+    volumes:
+      - redis:/data
+
+volumes:
+  bundle: {}
+  postgres: {}
+  redis: {}

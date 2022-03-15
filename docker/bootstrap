@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+error_msg() { printf "\033[31m%s\033[0m\n" "$*"; }
+
+if ! command -v docker >/dev/null 2>&1; then
+  error_msg 'Docker command not found. Please install: https://docs.docker.com/get-docker/'
+  exit 1
+fi
+
+required_docker="20"
+current_docker="$(docker --version | awk 'match($0, /[0-9\.]+/) {print substr($0,RSTART,RLENGTH)}')"
+if [ "$(printf '%s\n' "$required_docker" "$current_docker" | sort -V | head -n1)" != "$required_docker" ]; then
+  error_msg "Requires Docker v$required_docker or later. Please upgrade and rerun."
+  exit 1
+fi

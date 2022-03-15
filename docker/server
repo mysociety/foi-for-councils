@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+if [ -z "$DOCKER" ]; then
+  docker compose run --rm app bin/update
+  docker compose up
+  exit
+fi
