@@ -107,7 +107,7 @@ module CaseManagement
       end
 
       def pdf_contents
-        documents.map(&:pdf_contents).compact
+        documents.filter_map(&:pdf_contents)
       end
 
       def documents
