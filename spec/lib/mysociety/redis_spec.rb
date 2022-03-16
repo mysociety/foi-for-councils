@@ -35,4 +35,26 @@ RSpec.describe MySociety::Redis do
       )
     end
   end
+
+  context 'with sentinels configured with IPv6 address without ports' do
+    let(:configured_sentinels) { '[::1],[::2]' }
+
+    it 'uses default port' do
+      expect(sentinels).to include(
+        { host: '::1', port: 26_379 },
+        { host: '::2', port: 26_379 }
+      )
+    end
+  end
+
+  context 'with sentinels configured with IPv6 address with ports' do
+    let(:configured_sentinels) { '[::1]:123,[::2]:456' }
+
+    it 'uses custom port' do
+      expect(sentinels).to include(
+        { host: '::1', port: 123 },
+        { host: '::2', port: 456 }
+      )
+    end
+  end
 end
