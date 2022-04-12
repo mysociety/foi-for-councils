@@ -386,7 +386,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 5.6)
   rails!
-  redis (~> 4.1.0)
+  redis
   redis-namespace
   rspec-rails (~> 5.0)
   rubocop
@@ -394,7 +394,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.1.0)
   scenic
-  sidekiq (~> 5.2)
+  sidekiq
   sidekiq-scheduler
   spring
   spring-watcher-listen (~> 2.0.0)
