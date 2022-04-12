@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 rails_version = ENV['RAILS_VERSION'] || 'default'
 rails = case rails_version
         when 'main'    then { github: 'rails/rails', branch: 'main' }
+        when '7'       then '~> 7.0.0'
         when 'default' then '~> 6.1.0'
         else rails_version
         end
