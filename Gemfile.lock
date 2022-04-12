@@ -68,8 +68,8 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     afm (0.2.2)
-    annotate (3.1.1)
-      activerecord (>= 3.2, < 7.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
     bindex (0.8.1)
@@ -363,7 +363,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  annotate (~> 3.1.0)
+  annotate (~> 3.2.0)
   bootsnap (>= 1.1.0)
   byebug
   exception_notification
