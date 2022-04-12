@@ -42,9 +42,9 @@ gem 'icasework'
 gem 'infreemation'
 
 # Background workers
-gem 'redis', '~> 4.1.0'
+gem 'redis'
 gem 'redis-namespace'
-gem 'sidekiq', '~> 5.2'
+gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
 # Error reporting
