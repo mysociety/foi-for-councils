@@ -83,7 +83,6 @@ GEM
     diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    e2mmap (0.1.0)
     erubi (1.10.0)
     et-orbi (1.2.7)
       tzinfo
@@ -310,12 +309,10 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    sidekiq-scheduler (3.1.1)
-      e2mmap
-      redis (>= 3, < 5)
+    sidekiq-scheduler (4.0.0)
+      redis (>= 4.2.0)
       rufus-scheduler (~> 3.2)
-      sidekiq (>= 3)
-      thwait
+      sidekiq (>= 4)
       tilt (>= 1.4.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -329,8 +326,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.2.1)
-    thwait (0.2.0)
-      e2mmap
     tilt (2.0.10)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
