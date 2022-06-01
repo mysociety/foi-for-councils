@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: fdf840f69a2e33d78a9d40b91d9b7fddb76711e9
+  revision: e0b58f6dc089671cb7ed693346fe0f149b2b363d
   branch: main
   specs:
     actioncable (7.1.0.alpha)
@@ -179,7 +179,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.16.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -213,12 +213,12 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.4)
+    nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.4-aarch64-linux)
+    nokogiri (1.13.6-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.13.4-x86_64-linux)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
@@ -255,7 +255,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-protection (2.2.0)
       rack
     rack-test (1.1.0)
@@ -356,12 +356,12 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    strscan (3.0.1)
+    strscan (3.0.3)
     thor (1.2.1)
     thwait (0.2.0)
       e2mmap
     tilt (2.0.10)
-    timeout (0.2.0)
+    timeout (0.3.0)
     ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
