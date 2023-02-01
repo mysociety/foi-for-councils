@@ -73,7 +73,7 @@ group :development do
   gem 'annotate', '~> 3.2.0'
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
-  gem 'listen', '>= 3.0.5', '< 3.8'
+  gem 'listen', '>= 3.0.5', '< 3.9'
   # Use Puma as the app server
   gem 'puma', '~> 5.6'
   # Spring speeds up development by keeping your application running in the
