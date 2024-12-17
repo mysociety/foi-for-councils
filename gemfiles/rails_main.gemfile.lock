@@ -401,6 +401,9 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   listen (>= 3.0.5, < 3.8)
   mini_racer
+  net-imap
+  net-pop
+  net-smtp
   omniauth (~> 2.0.4)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
