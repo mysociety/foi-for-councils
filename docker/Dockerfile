@@ -1,4 +1,4 @@
-FROM ruby:2.7-bullseye
+FROM ruby:3.2-bullseye
 
 ENV DOCKER 1
 ENV DEBIAN_FRONTEND noninteractive
