@@ -14,9 +14,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { ruby: 2.7 }
-        - { ruby: 2.7, gemfile: 'gemfiles/rails_7.gemfile' }
-        - { ruby: 2.7, gemfile: 'gemfiles/rails_main.gemfile' }
+        - { ruby: 3.2 }
+        - { ruby: 3.2, gemfile: 'gemfiles/rails_7.gemfile' }
+        - { ruby: 3.2, gemfile: 'gemfiles/rails_main.gemfile' }
 
     services:
       postgres:

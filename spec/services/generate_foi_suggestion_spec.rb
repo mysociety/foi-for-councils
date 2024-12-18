@@ -9,8 +9,8 @@ RSpec.describe GenerateFoiSuggestion, type: :service do
       described_class.from_request(request)
     end
 
-    def suggest(*args)
-      suggest_all(*args).first
+    def suggest(*args, **kwargs)
+      suggest_all(*args, **kwargs).first
     end
 
     context 'resources with keywords' do
