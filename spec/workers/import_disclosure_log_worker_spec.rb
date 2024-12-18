@@ -13,7 +13,7 @@ RSpec.describe ImportDisclosureLogWorker, type: :worker do
 
   context 'no duration' do
     it 'calls #import! on DisclosureLog instance without duration' do
-      expect(DisclosureLog).to receive(:new).with({}).and_return(log)
+      expect(DisclosureLog).to receive(:new).with(no_args).and_return(log)
       expect(log).to receive(:import!)
       perform
     end
