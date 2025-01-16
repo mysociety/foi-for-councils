@@ -137,7 +137,7 @@ GEM
       pdf-reader (~> 2.4.0)
       rest-client (~> 2.1.0)
       rexml (~> 3.4.0)
-    infreemation (0.2.3)
+    infreemation (0.2.4)
       json (~> 2.5.1)
       rest-client (~> 2.1.0)
     jbuilder (2.11.5)
