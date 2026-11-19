@@ -22,5 +22,4 @@ bin/bundle config set path 'vendor/bundle'
 bin/bundle config set without 'development test'
 bin/bundle install
 
-bin/yarn install --no-progress --frozen-lockfile
 bin/rails assets:precompile
