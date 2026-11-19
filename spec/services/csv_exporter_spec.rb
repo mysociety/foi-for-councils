@@ -20,6 +20,7 @@ RSpec.describe CSVExporter, type: :service do
     it 'requires class which response to csv_columns' do
       expect { export }.to_not raise_error
       expect { described_class.new(['foo']) }.to raise_error(CSVExporter::Error)
+      expect { described_class.new(nil) }.to raise_error(CSVExporter::Error)
     end
 
     it 'can handle no objects without raising an error' do
