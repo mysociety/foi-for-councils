@@ -7,7 +7,7 @@ on:
 
 jobs:
   rspec:
-    name: Ruby ${{ matrix.ruby }} / ${{ matrix.gemfile || 'Gemfile' }}
+    name: Ruby ${{ matrix.ruby }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -39,7 +39,6 @@ jobs:
           --health-retries 5
 
     env:
-      BUNDLE_GEMFILE: ${{ matrix.gemfile || 'Gemfile' }}
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/alaveteli_test
       REDIS_URL: redis://localhost:6379/0
       RAILS_ENV: test

@@ -3,12 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-rails_version = ENV['RAILS_VERSION'] || 'default'
-rails = case rails_version
-        when 'default' then '~> 7.0.0'
-        else rails_version
-        end
-gem 'rails', rails
+gem 'rails', '~> 7.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
