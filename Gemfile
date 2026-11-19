@@ -67,6 +67,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails', '~> 6.2'
+  # Use Puma as the app server, also for JavaScript system specs
+  gem 'puma', '~> 5.6'
   gem 'rspec-rails', '~> 8.0'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -74,8 +76,9 @@ group :development, :test do
 end
 
 group :test do
-  # Drive the app like a user in system specs
+  # Drive the app like a user in system specs, with headless Firefox for JS
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -83,8 +86,6 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console'
   # anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.8'
-  # Use Puma as the app server
-  gem 'puma', '~> 5.6'
   gem 'web-console', '>= 3.3.0'
 end
 

@@ -3,20 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'admin namespace', type: :request do
-  around do |example|
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
-      provider: 'google',
-      uid: '123',
-      info: { email: 'kirk@example.com', name: 'James T. Kirk' },
-      credentials: { expires_at: 1.hour.from_now.to_i }
-    )
-    example.run
-  ensure
-    OmniAuth.config.mock_auth.delete(:google)
-    OmniAuth.config.test_mode = false
-  end
-
   def sign_in
     get '/auth/google/callback'
   end
