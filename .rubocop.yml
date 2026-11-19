@@ -1,7 +1,7 @@
 ---
 inherit_from: .rubocop_todo.yml
 
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
 
@@ -32,7 +32,7 @@ AllCops:
     - 'vendor/**/*'
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.4
 
 Metrics/BlockLength:
   Exclude:
@@ -42,7 +42,7 @@ Metrics/BlockLength:
 
 Layout/LineLength:
   Max: 80
-  IgnoredPatterns:
+  AllowedPatterns:
     - '^\s*it\s+.*do$'
     - '^\s*context\s+.*do$'
     - '^\s*describe\s+.*do$'
