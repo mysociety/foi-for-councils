@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-CaseManagement.current unless Rails.env.test?
+Rails.application.config.to_prepare do
+  CaseManagement.current unless Rails.env.test?
+end

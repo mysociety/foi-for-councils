@@ -20,7 +20,7 @@ module Foi
       if @contact.update(contact_params)
         redirect_to preview_foi_request_path
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -30,7 +30,7 @@ module Foi
       if @contact.update(contact_params)
         redirect_to preview_foi_request_path
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 

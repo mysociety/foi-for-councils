@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get 'help', to: 'help#index', as: :help
   end
 
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
   namespace :health do
     root to: redirect('/health/metrics')
 

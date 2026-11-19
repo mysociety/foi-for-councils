@@ -3,8 +3,9 @@ module HackneyTemplate
     initializer "hackney_template.assets.precompile" do |app|
       app.config.assets.precompile += %w(
         favicon.ico
-        hackney-template*.css
-        fonts*.css
+        hackney-template.css
+        hackney-template-print.css
+        fonts.css
         hackney-template.js
         ie.js
         apple-touch-icon-180x180.png

@@ -21,7 +21,7 @@ module Admin
         redirect_to admin_curated_links_path,
                     notice: 'Curated Link successfully created'
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -36,7 +36,7 @@ module Admin
         redirect_to admin_curated_links_path,
                     notice: 'Curated Link successfully updated'
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 

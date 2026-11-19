@@ -20,7 +20,7 @@ module Foi
       if @submission.queue
         redirect_to sent_foi_request_path
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 

@@ -116,6 +116,19 @@ RSpec.describe CaseManagement::Icasework::PublishedRequest, type: :model do
         is_expected.to eq(Date.parse('2021-02-15'))
       end
     end
+
+    context 'when iCasework does not return the dates' do
+      before do
+        attributes.delete(:case_details_information_request)
+        attributes.delete(:case_stage_stage)
+
+        allow(api_response).to receive(:fetch_additional_data).and_return({})
+      end
+
+      it 'falls back to the api_created_at' do
+        is_expected.to eq(Date.parse('2021-02-15'))
+      end
+    end
   end
 
   describe '#publishable?' do

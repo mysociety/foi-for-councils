@@ -2,6 +2,7 @@
 
 Rails.autoloaders.each do |autoloader|
   autoloader.inflector.inflect(
-    'csv_exporter' => 'CSVExporter'
+    'csv_exporter' => 'CSVExporter',
+    'mysociety' => 'MySociety'
   )
 end

@@ -12,4 +12,10 @@ RSpec.describe 'admin/help/index', type: :view do
     render
     expect(rendered).to match(/icasework/i)
   end
+
+  it 'renders the partial for the dummy case management' do
+    assign :case_management, CaseManagement::Dummy.new
+    render
+    expect(rendered).to match(/not connected to a case management system/)
+  end
 end

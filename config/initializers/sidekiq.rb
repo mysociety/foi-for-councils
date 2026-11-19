@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'mysociety/redis'
-
-Sidekiq.configure_server do |config|
-  config.redis = MySociety::Redis.options_with_namespace
-end
+require 'redis_connection'
 
 Sidekiq.configure_client do |config|
-  config.redis = MySociety::Redis.options_with_namespace
+  config.redis = RedisConnection.configuration
+end
+
+Sidekiq.configure_server do |config|
+  config.redis = RedisConnection.configuration
 end
