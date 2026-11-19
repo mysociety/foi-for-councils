@@ -1,9 +1,12 @@
 <%= form_for [:admin, @curated_link] do |f| %>
-  <%= f.url_field :url, class: 'form-control-full-width', required: true %>
+  <%= f.url_field :url, class: 'form-control-full-width', required: true,
+                        data: { curated_link_preview_target: 'url', action: 'input->curated-link-preview#update' } %>
 
-  <%= f.text_field :title, class: 'form-control-full-width', required: true %>
+  <%= f.text_field :title, class: 'form-control-full-width', required: true,
+                          data: { curated_link_preview_target: 'title', action: 'input->curated-link-preview#update' } %>
 
-  <%= f.text_area :summary, class: 'form-control-full-width' %>
+  <%= f.text_area :summary, class: 'form-control-full-width',
+                         data: { curated_link_preview_target: 'summary', action: 'input->curated-link-preview#update' } %>
 
   <%= f.text_field :keywords, class: 'form-control-full-width js-keyword-picker' %>
 
