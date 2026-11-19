@@ -12,8 +12,3 @@ Rails/I18nLocaleTexts:
     - 'app/controllers/admin/curated_links_controller.rb'
     - 'app/controllers/admin/performances_controller.rb'
     - 'app/models/performance.rb'
-
-# Offense count: 1
-Style/OpenStructUse:
-  Exclude:
-    - 'app/models/resource.rb'
