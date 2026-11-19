@@ -12,6 +12,4 @@
 //
 //= require jquery
 //= require taggle/src/taggle
-//= require rails-ujs
-//= require turbolinks
 //= require_tree ./application

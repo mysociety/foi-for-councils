@@ -83,7 +83,7 @@ var setUpKeywordPicker = function () {
 
 // Filter out older browsers, like IE8.
 if (window.getComputedStyle && Array.prototype.map && Array.prototype.forEach) {
-  document.addEventListener('turbolinks:load', function () {
+  document.addEventListener('turbo:load', function () {
     $('.js-keyword-picker').each(setUpKeywordPicker)
   })
 }

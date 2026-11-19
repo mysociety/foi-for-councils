@@ -42,6 +42,6 @@ var checkDeliveryStatus = function () {
   runTimer()
 }
 
-$(document).ready(function () {
+document.addEventListener('turbo:load', function () {
   $('.js-async-delivery-status').each(checkDeliveryStatus)
 })
