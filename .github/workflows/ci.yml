@@ -15,7 +15,6 @@ jobs:
       matrix:
         include:
         - { ruby: 3.2 }
-        - { ruby: 3.2, gemfile: 'gemfiles/rails_7.gemfile' }
 
     services:
       postgres:
