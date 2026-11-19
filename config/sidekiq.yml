@@ -1,21 +1,22 @@
-:schedule:
-  QueueSubmissionsWorker:
-    every: '5m'
-  CleanRequestsWorker:
-    every: '1d'
-  ImportDisclosureLogWorker-week:
-    class: ImportDisclosureLogWorker
-    cron: '0 1 * * *' # every day at 01:00
-    args: 'week'
-  ImportDisclosureLogWorker-month:
-    class: ImportDisclosureLogWorker
-    cron: '10 1 * * 1' # every Monday at 01:10
-    args: 'month'
-  ImportDisclosureLogWorker-year:
-    class: ImportDisclosureLogWorker
-    cron: '30 1 1 * *' # 1st of every month at 01:30
-    args: 'year'
-  ImportDisclosureLogWorker-all:
-    class: ImportDisclosureLogWorker
-    cron: '0 2 1 */3 *' # Start of every quarter at 02:00
-    args: 'all'
+:scheduler:
+  :schedule:
+    QueueSubmissionsWorker:
+      every: '5m'
+    CleanRequestsWorker:
+      every: '1d'
+    ImportDisclosureLogWorker-week:
+      class: ImportDisclosureLogWorker
+      cron: '0 1 * * *' # every day at 01:00
+      args: 'week'
+    ImportDisclosureLogWorker-month:
+      class: ImportDisclosureLogWorker
+      cron: '10 1 * * 1' # every Monday at 01:10
+      args: 'month'
+    ImportDisclosureLogWorker-year:
+      class: ImportDisclosureLogWorker
+      cron: '30 1 1 * *' # 1st of every month at 01:30
+      args: 'year'
+    ImportDisclosureLogWorker-all:
+      class: ImportDisclosureLogWorker
+      cron: '0 2 1 */3 *' # Start of every quarter at 02:00
+      args: 'all'
