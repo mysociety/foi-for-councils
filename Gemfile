@@ -37,7 +37,6 @@ gem 'infreemation'
 
 # Background workers
 gem 'redis'
-gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 

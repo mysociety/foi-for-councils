@@ -15,25 +15,14 @@ module MySociety
   # or
   # - ENV['REDIS_SENTINELS'] => '[::1]:26380,[::1]:26381,...'
   #
-  # Optional:
-  # - ENV['REDIS_NAMESPACE'] => 'foi_for_councils'
-  #
   module Redis
     class << self
-      def options_with_namespace
-        { namespace: namespace }.merge(options)
-      end
-
-      private
-
-      def namespace
-        [ENV['REDIS_NAMESPACE'], Rails.env].compact.join('-')
-      end
-
       def options
         { url: ENV['REDIS_URL'], password: ENV['REDIS_PASSWORD'] }.
           merge(sentinel_options)
       end
+
+      private
 
       def sentinel_options
         return {} unless ENV['REDIS_SENTINELS']
