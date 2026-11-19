@@ -20,10 +20,6 @@ module MySociety
   #
   module Redis
     class << self
-      def create
-        ::Redis::Namespace.new(namespace, redis: ::Redis.new(options))
-      end
-
       def options_with_namespace
         { namespace: namespace }.merge(options)
       end
