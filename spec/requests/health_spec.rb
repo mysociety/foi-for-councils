@@ -10,6 +10,13 @@ RSpec.describe 'health namespace', type: :request do
     end
   end
 
+  describe 'GET /up' do
+    it 'reports that the app booted' do
+      get '/up'
+      expect(response).to have_http_status(:ok)
+    end
+  end
+
   describe 'GET /health/metrics' do
     it 'renders the metrics' do
       create(:submission_with_foi_request, :unqueued)
