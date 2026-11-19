@@ -8,7 +8,8 @@
   <%= f.text_area :summary, class: 'form-control-full-width',
                          data: { curated_link_preview_target: 'summary', action: 'input->curated-link-preview#update' } %>
 
-  <%= f.text_field :keywords, class: 'form-control-full-width js-keyword-picker' %>
+  <%= f.text_field :keywords, class: 'form-control-full-width',
+                             data: { controller: 'keyword-picker' } %>
 
   <p class="cta-section">
     <%= f.submit 'Save Curated Link', class: 'button' %>
