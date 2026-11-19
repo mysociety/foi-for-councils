@@ -67,6 +67,7 @@ RSpec.describe 'foi namespace', type: :request do
     context 'when a curated link matches the request' do
       let!(:curated_link) do
         create(:curated_link, title: 'Housing budget 2018',
+                              url: 'https://www.hackney.gov.uk/budget',
                               keywords: 'housing, budget')
       end
 
