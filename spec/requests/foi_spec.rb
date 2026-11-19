@@ -52,7 +52,7 @@ RSpec.describe 'foi namespace', type: :request do
 
     it 'renders errors for a blank request' do
       post '/foi/request', params: { foi_request: { body: '' } }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(response.body).to include("can't be blank")
     end
 

@@ -18,7 +18,7 @@ module Admin
         redirect_to admin_performance_path,
                     notice: 'Performance percentage successfully updated'
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
