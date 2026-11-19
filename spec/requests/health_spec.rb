@@ -9,4 +9,12 @@ RSpec.describe 'health namespace', type: :request do
       expect(response).to redirect_to('/health/metrics')
     end
   end
+
+  describe 'GET /health/metrics' do
+    it 'renders the metrics' do
+      create(:submission_with_foi_request, :unqueued)
+      get '/health/metrics'
+      expect(response.body).to include('app_queuable_submissions 1')
+    end
+  end
 end
