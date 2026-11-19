@@ -2,8 +2,8 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-  <%= javascript_include_tag 'turbo.min', type: 'module', 'data-turbo-track': 'reload' %>
-  <%= javascript_include_tag 'application', defer: true, 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+  <%= javascript_include_tag 'legacy', defer: true, 'data-turbo-track': 'reload' %>
 <% end %>
 
 <% content_for :proposition_header do %>
