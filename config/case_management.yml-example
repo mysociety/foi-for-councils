@@ -4,3 +4,9 @@ development:
     endpoint: 'https://api.infreemation.co.uk/sandbox'
     api_key: 'secret'
     username: 'username'
+
+# Use the Dummy adapter to run the app without a case management system. FOI
+# requests are then not delivered anywhere.
+#
+# production:
+#   adapter: 'Dummy'
