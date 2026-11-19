@@ -28,7 +28,7 @@ class CSVExporter
   private
 
   def klass
-    @klass ||= objects&.first&.class
+    @klass ||= objects&.take(1)&.first&.class
   end
 
   def headers
