@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { ruby: 3.2 }
+        - { ruby: 3.4 }
 
     services:
       postgres:
