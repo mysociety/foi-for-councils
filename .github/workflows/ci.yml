@@ -63,3 +63,13 @@ jobs:
     - name: Run tests
       run: |
         bundle exec rspec
+
+    - name: Precompile assets for production
+      env:
+        RAILS_ENV: production
+        SECRET_KEY_BASE_DUMMY: 1
+      run: |
+        printf "production:\n  adapter: 'Dummy'\n" >> config/case_management.yml
+        bundle exec rails assets:precompile
+        ls public/assets/application-*.css public/assets/application-*.js \
+          public/assets/hackney-template-*.css public/assets/hackney-template-*.js
