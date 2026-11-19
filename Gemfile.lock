@@ -437,7 +437,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotaterb (~> 4.26)
-  bootsnap (>= 1.1.0)
+  bootsnap
   byebug
   csv
   exception_notification

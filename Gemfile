@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 8.1.0'
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', require: false
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use SCSS for stylesheets
@@ -57,7 +60,6 @@ gem 'net-smtp', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
-  gem 'bootsnap', '>= 1.1.0', require: false
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 8.0'

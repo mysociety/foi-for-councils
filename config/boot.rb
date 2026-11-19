@@ -1,14 +1,7 @@
-# frozen_string_literal: true
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
 
-ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
-
-require 'bundler/setup' # Set up gems listed in the Gemfile.
-
-begin
-  require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
-rescue LoadError
-  warn "Couldn't find Bootsnap in the current environment"
-end
+require "bundler/setup" # Set up gems listed in the Gemfile.
+require "bootsnap/setup" # Speed up boot time by caching expensive operations.
 
 # TODO: Remove this. This is a hacky system for having a default environment.
 # It looks for a config/rails_env.rb file, and reads stuff from there if
