@@ -7,7 +7,6 @@ require:
 
 AllCops:
   Exclude:
-    - 'Vagrantfile'
     - 'bin/bundle'
     - 'config/rails_env.rb'
     - 'db/migrate/**'
