@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe MySociety::Redis do
+RSpec.describe RedisConnection do
   around do |example|
     original_sentinels = ENV['REDIS_SENTINELS']
     ENV['REDIS_SENTINELS'] = configured_sentinels
@@ -11,7 +11,7 @@ RSpec.describe MySociety::Redis do
   end
 
   def sentinels
-    described_class.options[:sentinels]
+    described_class.configuration[:sentinels]
   end
 
   context 'with sentinels configured with IPv4 address without ports' do
