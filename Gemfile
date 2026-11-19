@@ -73,6 +73,11 @@ group :development, :test do
   gem 'rubocop-rails', require: false
 end
 
+group :test do
+  # Drive the app like a user in system specs
+  gem 'capybara'
+end
+
 group :development do
   gem 'annotaterb', '~> 4.26'
   # Access an interactive console on exception pages or by calling 'console'
