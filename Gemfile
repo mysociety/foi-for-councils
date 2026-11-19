@@ -12,10 +12,6 @@ gem 'bootsnap', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
