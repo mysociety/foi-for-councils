@@ -26,6 +26,13 @@ RSpec.describe 'Sent request page', type: :system, js: true do
     expect(page).to have_text('We will email a reference number', wait: 10)
   end
 
+  it 'falls back to the generic message when the status check fails' do
+    send_request
+    expect(page).to have_text('Sending your request')
+    page.execute_script('window.fetch = () => Promise.reject(new TypeError())')
+    expect(page).to have_text('We will email a reference number', wait: 3)
+  end
+
   it 'stops checking once the visitor leaves the page' do
     send_request
     expect(page).to have_text('Sending your request')

@@ -26,18 +26,22 @@ export default class extends Controller {
   }
 
   async check() {
-    const response = await fetch(this.urlValue, {
-      headers: { Accept: "application/json" }
-    })
-    const { reference } = await response.json()
+    try {
+      const response = await fetch(this.urlValue, {
+        headers: { Accept: "application/json" }
+      })
+      const { reference } = await response.json()
 
-    if (!this.element.isConnected) return
+      if (!this.element.isConnected) return
 
-    if (reference) {
-      this.referenceTarget.textContent = reference
-      this.show(this.deliveredTarget)
-    } else {
-      this.schedule()
+      if (reference) {
+        this.referenceTarget.textContent = reference
+        this.show(this.deliveredTarget)
+      } else {
+        this.schedule()
+      }
+    } catch {
+      this.show(this.genericTarget)
     }
   }
 
