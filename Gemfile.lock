@@ -271,11 +271,10 @@ GEM
     parser (3.3.14.0)
       ast (~> 2.4.1)
       racc
-    pdf-reader (2.4.2)
-      Ascii85 (~> 1.0)
-      afm (~> 0.2.1)
+    pdf-reader (2.16.0)
+      Ascii85 (>= 1.0, < 3.0, != 2.0.0)
+      afm (>= 0.2.1, < 2)
       hashery (~> 2.0)
-      ruby-rc4
       ttfunk
     pg (1.7.0)
     pg (1.7.0-aarch64-linux)
@@ -402,7 +401,6 @@ GEM
       rubocop (>= 1.89.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
     ruby-progressbar (1.13.0)
-    ruby-rc4 (0.1.5)
     rubyzip (3.7.0)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
