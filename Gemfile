@@ -64,7 +64,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'factory_bot_rails', '~> 6.2'
   # Use Puma as the app server, also for JavaScript system specs
-  gem 'puma', '~> 5.6'
+  gem 'puma', '~> 8.1'
   gem 'rspec-rails', '~> 8.0'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
