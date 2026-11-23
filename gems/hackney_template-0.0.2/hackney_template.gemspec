@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-html-matchers', '0.8.1'
   spec.add_development_dependency 'mustache', '0.99.7'
   spec.add_development_dependency 'nokogiri', '1.6.6.2'
-  spec.add_development_dependency 'octokit', '3.4.2'
+  spec.add_development_dependency 'octokit', '10.0.0'
   spec.add_development_dependency 'pry'
 end
