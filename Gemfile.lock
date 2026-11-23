@@ -223,7 +223,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     netrc (0.11.0)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.19.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -272,7 +272,7 @@ GEM
     prettyprint (0.2.1)
     prism (2.1.0)
     public_suffix (7.0.5)
-    puma (5.6.4)
+    puma (8.1.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.0)
@@ -495,7 +495,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg (>= 0.18, < 2.0)
-  puma (~> 5.6)
+  puma (~> 8.1)
   rails (~> 8.1.0)
   redis
   rspec-rails (~> 8.0)
