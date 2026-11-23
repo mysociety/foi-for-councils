@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'sprockets', '2.10.0'
   spec.add_development_dependency 'sass', '3.2.9'
   spec.add_development_dependency 'govuk_frontend_toolkit', '5.2.0'
-  spec.add_development_dependency 'rspec', '3.5.0'
+  spec.add_development_dependency 'rspec', '3.13.2'
   spec.add_development_dependency 'rspec-html-matchers', '0.10.0'
   spec.add_development_dependency 'mustache', '1.1.3'
   spec.add_development_dependency 'nokogiri', '1.6.6.2'
