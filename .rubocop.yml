@@ -1,14 +1,29 @@
 ---
 inherit_from: .rubocop_todo.yml
 
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
 
 AllCops:
   Exclude:
-    - 'Vagrantfile'
     - 'bin/bundle'
+    - 'bin/ci'
+    - 'bin/dev'
+    - 'bin/rails'
+    - 'bin/rake'
+    - 'bin/rubocop'
+    - 'bin/setup'
+    - 'config/application.rb'
+    - 'config/boot.rb'
+    - 'config/ci.rb'
+    - 'config/environment.rb'
+    - 'config/environments/*.rb'
+    - 'config/initializers/assets.rb'
+    - 'config/initializers/content_security_policy.rb'
+    - 'config/initializers/filter_parameter_logging.rb'
+    - 'config/initializers/inflections.rb'
+    - 'config/puma.rb'
     - 'config/rails_env.rb'
     - 'db/migrate/**'
     - 'db/schema.rb'
@@ -17,7 +32,7 @@ AllCops:
     - 'vendor/**/*'
   NewCops: enable
   SuggestExtensions: false
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.4
 
 Metrics/BlockLength:
   Exclude:
@@ -27,7 +42,7 @@ Metrics/BlockLength:
 
 Layout/LineLength:
   Max: 80
-  IgnoredPatterns:
+  AllowedPatterns:
     - '^\s*it\s+.*do$'
     - '^\s*context\s+.*do$'
     - '^\s*describe\s+.*do$'
@@ -43,5 +58,4 @@ Style/ClassAndModuleChildren:
 
 Style/MixinUsage:
   Exclude:
-    - 'bin/setup'
     - 'bin/update'

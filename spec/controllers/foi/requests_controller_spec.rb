@@ -58,8 +58,8 @@ RSpec.describe Foi::RequestsController, type: :controller do
         allow(foi_request).to receive(:update).and_return(false)
       end
 
-      it 'returns http success' do
-        is_expected.to have_http_status(200)
+      it 'returns unprocessable entity' do
+        is_expected.to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -107,8 +107,8 @@ RSpec.describe Foi::RequestsController, type: :controller do
       end
       before { allow(foi_request).to receive(:update).and_return(false) }
 
-      it 'returns http success' do
-        is_expected.to have_http_status(200)
+      it 'returns unprocessable entity' do
+        is_expected.to have_http_status(:unprocessable_entity)
       end
     end
   end

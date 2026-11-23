@@ -39,7 +39,7 @@ RSpec.describe Admin::ExportsController, type: :controller do
         resource.id, resource.type,
         resource.title, resource.url, resource.keywords,
         resource.shown, resource.click_rate, resource.answer_rate,
-        resource.created_at.to_s(:db), resource.updated_at.to_s(:db)
+        resource.created_at.to_fs(:db), resource.updated_at.to_fs(:db)
       ].join(','))
     end
   end

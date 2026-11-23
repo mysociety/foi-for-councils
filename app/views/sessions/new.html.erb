@@ -1,6 +1,7 @@
 <div class="grid-row">
   <div class="column-full">
     <hr>
-    <%= link_to 'Sign in', '/auth/google', method: :post, class: 'button' %>
+    <%= button_to 'Sign in', '/auth/google', class: 'button',
+                                             form: { data: { turbo: false } } %>
   </div>
 </div>

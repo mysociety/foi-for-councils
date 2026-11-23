@@ -10,6 +10,6 @@ class LinksController < ApplicationController
   def show
     suggestion = FoiSuggestion.find(params[:id])
     suggestion.clicked! if current_foi_request?(suggestion.foi_request)
-    redirect_to suggestion.url
+    redirect_to suggestion.url, allow_other_host: true
   end
 end

@@ -28,7 +28,7 @@ class CSVExporter
   private
 
   def klass
-    @klass ||= objects&.first&.class
+    @klass ||= objects&.take(1)&.first&.class
   end
 
   def headers
@@ -43,7 +43,7 @@ class CSVExporter
 
   def map_value(value)
     case value
-    when Time then value.to_s(:db)
+    when Time then value.to_fs(:db)
     else value
     end
   end

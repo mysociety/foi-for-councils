@@ -15,6 +15,8 @@
 # Union of CuratedLink and PublishedRequest powered by a Postgres view.
 #
 class Resource < ApplicationRecord
+  Statistics = Data.define(:shown, :click_rate, :answer_rate)
+
   belongs_to :resource, polymorphic: true
 
   delegate :foi_suggestions, :id, :created_at, :updated_at, to: :resource
@@ -33,6 +35,6 @@ class Resource < ApplicationRecord
   private
 
   def statistics
-    @statistics ||= OpenStruct.new(foi_suggestions.statistics)
+    @statistics ||= Statistics.new(**foi_suggestions.statistics)
   end
 end
