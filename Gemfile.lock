@@ -108,7 +108,7 @@ GEM
     connection_pool (2.2.5)
     crass (1.0.6)
     csv (3.3.7)
-    date (3.4.1)
+    date (3.6.0)
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -213,12 +213,12 @@ GEM
     msgpack (1.5.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    net-imap (0.5.2)
+    net-imap (0.6.8)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.2)
+    net-protocol (0.4.0)
       timeout
     net-smtp (0.5.0)
       net-protocol
@@ -434,7 +434,7 @@ GEM
       railties (>= 6.0.0)
     thor (1.5.0)
     tilt (2.0.10)
-    timeout (0.4.3)
+    timeout (0.6.1)
     tsort (0.2.0)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
