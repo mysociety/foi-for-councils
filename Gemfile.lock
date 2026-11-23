@@ -132,10 +132,12 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
-    faraday (2.2.0)
-      faraday-net_http (~> 2.0)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (2.0.2)
+    faraday (2.14.3)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-net_http (3.4.4)
+      net-http (~> 0.5)
     ffi (1.17.4)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-arm64-darwin)
@@ -218,6 +220,8 @@ GEM
       prism (>= 1.5, < 3)
     msgpack (1.5.1)
     multi_xml (0.6.0)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
     net-imap (0.6.8)
       date
       net-protocol
@@ -402,7 +406,6 @@ GEM
       rubocop-ast (>= 1.44.0, < 2.0)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
-    ruby2_keywords (0.0.5)
     rubyzip (3.7.0)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
